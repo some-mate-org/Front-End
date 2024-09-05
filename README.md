@@ -21,6 +21,7 @@ create table users(
     phone varchar(20) not null unique,
     `name` varchar(20) not null,
     `password` varchar(40) not null,
+    profile varchar(20) not null,
     mbti varchar(10) not null,
     foreign key(mbti) references mbti(my_mbti)
 );
