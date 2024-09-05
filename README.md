@@ -12,8 +12,8 @@ create database somemate;
 use somemate;
 
 create table mbti(
-	my_mbti varchar(10) primary key,
-  best_mbti varchar(10)
+    my_mbti varchar(10) primary key,
+    best_mbti varchar(10)
 );
 
 create table users(
