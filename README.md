@@ -17,9 +17,9 @@ create table mbti(
 );
 
 create table users(
-	idx int primary key auto_increment,
+    idx int primary key auto_increment,
     phone varchar(20) not null unique,
-	`name` varchar(20) not null,
+    `name` varchar(20) not null,
     `password` varchar(40) not null,
     mbti varchar(10) not null,
     foreign key(mbti) references mbti(my_mbti)
