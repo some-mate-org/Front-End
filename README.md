@@ -12,18 +12,17 @@ create database somemate;
 use somemate;
 
 create table mbti(
-    my_mbti varchar(10) primary key,
-    best_mbti varchar(10)
+	my_mbti varchar(10) primary key,
+    `desc` varchar(1000) not null,
+    best_mbti varchar(10) not null
 );
 
 create table users(
-    idx int primary key auto_increment,
+	idx int primary key auto_increment,
     phone varchar(20) not null unique,
-    `name` varchar(20) not null,
+	`name` varchar(20) not null,
     `password` varchar(40) not null,
-    profile varchar(20) not null,
     mbti varchar(10) not null,
     foreign key(mbti) references mbti(my_mbti)
 );
-
 ```
