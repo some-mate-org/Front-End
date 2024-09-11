@@ -1,4 +1,4 @@
-import SomeMateLogo from '../../assets/SomeMateLogo.svg?react';
+import SomeMateLogo from '../../assets/logo/SomeMateLogo.svg?react';
 import * as S from './Header.styled';
 
 export default function index() {
