@@ -38,4 +38,9 @@ export const router = createBrowserRouter([
     element: <PageWrapper />,
     children: [{ index: true, element: <MatchingPage /> }],
   },
+  {
+    path: '/survey',
+    element: <PageWrapper />,
+    children: [{ index: true, element: <SurveyPage /> }],
+  },
 ]);
