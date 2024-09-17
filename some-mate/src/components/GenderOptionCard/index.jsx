@@ -1,8 +1,9 @@
+// GenderOptionCard.js
 import { OptionCardContainer, OptionImage, OptionText } from './GenderOptionCard.styled';
 
-const GenderOptionCard = ({ imageSrc, title }) => {
+const GenderOptionCard = ({ imageSrc, title, onClick }) => { // onClick 추가
   return (
-    <OptionCardContainer>
+    <OptionCardContainer onClick={onClick}> 
       <OptionImage src={imageSrc} alt={title} />
       <OptionText>{title}</OptionText>
     </OptionCardContainer>

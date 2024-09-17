@@ -9,23 +9,23 @@ export const Title = styled.h2`
   color: #6b6969;
   font-size: 20px;
   margin-bottom: 20px;
-  margin-top: 59px;
+  margin-top: 30px;
 
   span {
     color: #F76767;
   }
 `;
 
-export const GenderOptionsContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 86px;
-  margin-right: 26px;
-  gap: 34px;
-`;
+// export const GenderOptionsContainer = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   margin-top: 86px;
+//   margin-right: 26px;
+//   gap: 3px;
+// `;
 
 export const ButtonContainer = styled.div`
-  margin-top: 137px;
+  margin-top: 37px;
 `;
 
 export const TitleLogo = styled.div`
@@ -37,4 +37,3 @@ export const TitleLogo = styled.div`
   width: fit-content;
   transform: translateX(-10px);
 `;
-

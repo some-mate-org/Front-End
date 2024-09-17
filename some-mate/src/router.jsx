@@ -3,6 +3,7 @@ import PageWrapper from './layout/PageWrapper';
 import MainPage from './pages/MainPage';
 import SignPage from './pages/SignPage';
 import SurveyPage from './pages/SurveyPage';
+import SurveyPage from './pages/SurveyPage';
 
 
 
@@ -16,6 +17,11 @@ export const router = createBrowserRouter([
     path: '/sign',
     element: <PageWrapper />,
     children: [{ index: true, element: <SignPage /> }],
+  },
+  {
+    path: '/survey',
+    element: <PageWrapper />,
+    children: [{ index: true, element: <SurveyPage /> }],
   },
   {
     path: '/survey',
