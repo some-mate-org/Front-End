@@ -5,6 +5,7 @@ import Button from '../../components/Button';
 import { useEffect, useState } from 'react';
 import { getMBTIInfo } from '../../services/getMBTIInfo';
 import getMatchedUserInfo from '../../services/getMatchedUserInfo';
+import patchUserMBTI from '../../services/patchUserMBTI';
 
 export default function ResultPage() {
   const mbti = useParams().result;
@@ -19,8 +20,7 @@ export default function ResultPage() {
   }, []);
 
   async function handleAcceptBtn() {
-    const userIdx = 8;
-    console.log('clicked!');
+    const userIdx = 8; //세션에 저장된 userIdx값으로 수정 필요
 
     try {
       await getMatchedUserInfo(userIdx, setMatchedUserInfo, setDesc);
@@ -29,13 +29,20 @@ export default function ResultPage() {
     }
   }
 
+  //마운트 시 유저 엠비티아이 변경
+  useEffect(() => {
+    // const userIdx = sessionStorage.getItem("userIdx")
+    const userIdx = 8;
+    patchUserMBTI(userIdx, mbti.toUpperCase());
+  }, []);
+
   // matchedUserInfo가 유효한 값일 때만 navigate 동작
   useEffect(() => {
     if (matchedUserInfo !== null) {
       navigate('/matching', {
         state: {
           matchedUserInfo: matchedUserInfo,
-          matchedUserDesc : desc
+          matchedUserDesc: desc,
         },
       });
     }
