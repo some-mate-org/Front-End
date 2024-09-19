@@ -6,6 +6,8 @@ import SignPage2 from './pages/SignPage2';
 import SignPage3 from './pages/SignPage3';
 import ResultPage from './pages/ResultPage';
 import MatchingPage from './pages/MatchingPage';
+import SurveyPage from './pages/SurveyPage';
+
 
 export const router = createBrowserRouter([
   {
@@ -42,5 +44,15 @@ export const router = createBrowserRouter([
     path: '/survey',
     element: <PageWrapper />,
     children: [{ index: true, element: <SurveyPage /> }],
+  },
+  {
+    path: '/result/:result',
+    element: <PageWrapper />,
+    children: [{ index: true, element: <ResultPage /> }],
+  },
+  {
+    path: '/matching',
+    element: <PageWrapper />,
+    children: [{ index: true, element: <MatchingPage /> }],
   },
 ]);
