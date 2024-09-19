@@ -4,10 +4,10 @@ import * as S from './SurveyPage.styled';
 import ProgressBar from '../../components/ProgressBar';
 import SurveyCard from '../../components/SurveyCard';
 import GenderCard from '../../components/GenderCard';
-import { fetchQuestion, submitAnswers } from '../../services/surveyService';
+import { fetchQuestion } from '../../services/surveyService';
 import { useNavigate } from 'react-router-dom';
 
- export default function SurveyPage() {
+export default function SurveyPage() {
   const [question, setQuestion] = useState({});
   const [answerOptions, setAnswerOptions] = useState([]);
   const [answerList, setAnswerList] = useState([]); // 선택한 값을 담음
@@ -84,18 +84,12 @@ import { useNavigate } from 'react-router-dom';
 
         const dominantSN = mbti.includes('S') ? 'S' : 'N';
 
-        return `${dominantEI}${dominantSN}${dominantTF}${dominantPJ }`; 
+        return `${dominantEI}${dominantSN}${dominantTF}${dominantPJ}`;
       };
 
       const mbtiResult = calculateMBTI();
       console.log('Final MBTI:', mbtiResult);
-
-      try {
-        await submitAnswers(updatedAnswerList);
-        navigate(`/result/${mbtiResult}`); // 결과 페이지로 이동
-      } catch (error) {
-        console.error('Error submitting answers:', error);
-      }
+      navigate(`/result/${mbtiResult.toLowerCase()}`); // 결과 페이지로 이동
     } else {
       setCurrentQuestionId(nextQuestionId);
     }
@@ -114,7 +108,8 @@ import { useNavigate } from 'react-router-dom';
         ) : (
           <>
             <S.QuestionText>{question.question2_title?.questionText || ''}</S.QuestionText>
-            <S.Emoji>{question.question2_title?.emoji || ''}</S.Emoji>
+            <S.Emoji>{question.question2_title?.emoji || ''}fix: 결과 페이지로의 네비게이션 경로 수정
+            </S.Emoji>
           </>
         )}
       </S.Question>
@@ -130,4 +125,3 @@ import { useNavigate } from 'react-router-dom';
     </S.PageWrapper>
   );
 };
-
