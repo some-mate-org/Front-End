@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const InputContainer = styled.div`
-  width: 281px;
-  height: 60px;
+  width: 270px;
+  height: 50px;
   background-color: #D7ECFF;
-  margin: 40px 25px;
-  border-radius: 10px;
+  margin: 30px 35px auto;
+  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,6 +21,7 @@ export const Input = styled.input`
   font-weight: 200;
   padding: 0 16px; 
   border-radius: 10px;
+  
   
   &:focus {
     outline: none; 
