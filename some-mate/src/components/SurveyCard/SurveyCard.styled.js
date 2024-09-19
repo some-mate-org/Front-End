@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const CardContainer = styled.div`
   
-  border: 1px solid #A3D1FB;
+  border: 2px solid #A3D1FB;
   padding: 25px;
   border-radius: 8px;
   cursor: pointer;
