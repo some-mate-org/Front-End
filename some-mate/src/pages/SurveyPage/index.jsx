@@ -108,7 +108,7 @@ export default function SurveyPage() {
         ) : (
           <>
             <S.QuestionText>{question.question2_title?.questionText || ''}</S.QuestionText>
-            <S.Emoji>{question.question2_title?.emoji || ''}fix: 결과 페이지로의 네비게이션 경로 수정
+            <S.Emoji>{question.question2_title?.emoji || ''}
             </S.Emoji>
           </>
         )}
