@@ -15,10 +15,3 @@ export const fetchQuestion = async (questionId) => {
   }
 };
 
-export const submitAnswers = async (answerList) => {
-  try {
-    await axios.post(`${URL}/questions/answers`, answerList);
-  } catch (error) {
-    console.error('Error submitting answers:', error);
-  }
-};
