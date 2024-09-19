@@ -12,20 +12,23 @@ export const Title = styled.h2`
   margin-top: 59px;
 
   span {
-    color: #F76767;
+    color: #2287FE;
   }
 `;
 
-export const GenderOptionsContainer = styled.div`
+export const ProfileOptionsContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 86px;
+  margin-top: 10px;
   margin-right: 26px;
-  gap: 34px;
+  margin-bottom: 10px;
+  /* margin-down: 10px; */
+  gap: 10px;
 `;
 
 export const ButtonContainer = styled.div`
-  margin-top: 137px;
+
+  margin-top: 50px;
 `;
 
 export const TitleLogo = styled.div`
@@ -37,4 +40,3 @@ export const TitleLogo = styled.div`
   width: fit-content;
   transform: translateX(-10px);
 `;
-
