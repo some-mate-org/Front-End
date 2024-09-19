@@ -16,7 +16,7 @@ export default function MainPage() {
       <S.TitleLogo>
         <ProjectLogo />
       </S.TitleLogo>
-      <Button category text="썸메이트 가입하기" width={232} />
+      <Button text="썸메이트 가입하기" width={228} theme="gray" />
       <S.Text>
         이미 계정이 있다면?<S.StyledLink to="/login">로그인 하기</S.StyledLink>
       </S.Text>
