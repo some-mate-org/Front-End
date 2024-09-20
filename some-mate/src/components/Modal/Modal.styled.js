@@ -16,9 +16,8 @@ export const ModalContainer = styled.div`
   box-sizing: border-box;
 `;
 
-
 export const ModalText = styled.p`
-  margin-top: 5px 0;
+  margin-top: 1.5rem;
   font-size: 13px;
   font-weight: bold;
   color: #333;
@@ -34,7 +33,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const DelayButton = styled.button`
-  width: 90px;
+    width: 13rem;
   height: 32px;
   border-radius: 16px;
   font-weight: bold;
@@ -42,7 +41,7 @@ export const DelayButton = styled.button`
   border: none;
   color: #2287fe;
   font-size: 16px;
-  margin-bottom: 5px; 
+  margin-bottom: 5px;
   align-self: center;
   cursor: pointer;
 `;
@@ -75,7 +74,7 @@ export const ModalBackground = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); 
+  background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
   display: flex;
   align-items: center;

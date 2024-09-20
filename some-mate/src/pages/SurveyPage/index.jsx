@@ -27,7 +27,9 @@ export default function SurveyPage() {
  }, [userData]);
 
   useEffect(() => {
-   // 질문과 답변 옵션을 가져옴
+    console.log(userData)
+    // 질문과 답변 옵션을 가져옴
+    
     const loadQuestion = async () => {
       try {
         const questionData = await fetchQuestion(currentQuestionId);
@@ -46,7 +48,10 @@ export default function SurveyPage() {
     loadQuestion();
   }, [currentQuestionId]);
 
-   useEffect(() => {
+   
+
+
+  useEffect(() => {
     // 진행률 업데이트
     const newProgress = ((currentQuestionId - 1) / TOTAL_QUESTIONS) * 100;
     setProgress(newProgress);
@@ -63,53 +68,62 @@ export default function SurveyPage() {
   }, [currentQuestionId]);
 
   const handleAnswerSelect = async (value) => {
-    // 선택한 answer의 value를 mbti 배열에 추가
-    setMbti((prevMbti) => [...prevMbti, value]);
-
-    const newAnswer = { questionId: currentQuestionId, selectedAnswer: value };
-    const updatedAnswerList = [...answerList, newAnswer];
-    setAnswerList(updatedAnswerList);
-    const nextQuestionId = currentQuestionId + 1;
-
-    // 모든 질문이 끝났을 경우
-    if (nextQuestionId >TOTAL_QUESTIONS) {
-      // 최종 MBTI 계산
-      const calculateMBTI = () => {
-        const countOccurrences = (arr, target) => arr.filter(item => item === target).length;
-
-        const E_count = countOccurrences(mbti, 'E');
-        const I_count = countOccurrences(mbti, 'I');
-        const dominantEI = E_count > I_count ? 'E' : 'I';
-
-        const T_count = countOccurrences(mbti, 'T');
-        const F_count = countOccurrences(mbti, 'F');
-        const dominantTF = T_count > F_count ? 'T' : 'F';
-
-        const P_count = countOccurrences(mbti, 'P');
-        const J_count = countOccurrences(mbti, 'J');
-        const dominantPJ = P_count > J_count ? 'P' : 'J';
-
-        const dominantSN = mbti.includes('S') ? 'S' : 'N';
-
-        return `${dominantEI}${dominantSN}${dominantTF}${dominantPJ}`;
-      };
-      const mbtiResult = calculateMBTI();
-       updateUser({ "mbti" : mbtiResult });
-      
-      const userDataWithMBTI = { ...userData, "mbti": mbtiResult };
-      //post 요청
-      try {
-        const response = await postUserInfo(userDataWithMBTI);
-        if (response) {
-          navigate(`/result/${mbtiResult.toLowerCase()}`);
-        }
-      } catch (error) {
-        console.error('Error posting user data:', error);
+    setMbti((prevMbti) => {
+      const updatedMbti = [...prevMbti, value];
+  
+      if (currentQuestionId === TOTAL_QUESTIONS) {
+        // 최종 MBTI 계산
+        const calculateMBTI = () => {
+          const countOccurrences = (arr, target) => arr.filter(item => item === target).length;
+  
+          const E_count = countOccurrences(updatedMbti, 'E');
+          const I_count = countOccurrences(updatedMbti, 'I');
+          const dominantEI = E_count > I_count ? 'E' : 'I';
+  
+          const T_count = countOccurrences(updatedMbti, 'T');
+          const F_count = countOccurrences(updatedMbti, 'F');
+          const dominantTF = T_count > F_count ? 'T' : 'F';
+  
+          const P_count = countOccurrences(updatedMbti, 'P');
+          const J_count = countOccurrences(updatedMbti, 'J');
+          const dominantPJ = P_count > J_count ? 'P' : 'J';
+  
+          const dominantSN = updatedMbti.includes('S') ? 'S' : 'N';
+  
+          return `${dominantEI}${dominantSN}${dominantTF}${dominantPJ}`;
+        };
+  
+        const mbtiResult = calculateMBTI();
+        updateUser({ ...userData, mbti: mbtiResult });
+  
+        const userDataWithMBTI = { ...userData, mbti: mbtiResult };
+  
+        // async 함수 내에서 await 사용
+        (async () => {
+          try {
+            const response = await postUserInfo(userDataWithMBTI);
+            if (response) {
+              console.log('User registered successfully:', response);
+              navigate(`/result/${mbtiResult.toLowerCase()}`);
+            }
+          } catch (error) {
+            console.error('Error posting user data:', error);
+          }
+        })();
       }
-    } else {
-      setCurrentQuestionId(nextQuestionId);
-    }
+  
+      return updatedMbti;
+    });
+  
+    setAnswerList((prevAnswers) => [
+      ...prevAnswers,
+      { questionId: currentQuestionId, selectedAnswer: value },
+    ]);
+  
+    setCurrentQuestionId((prevId) => prevId + 1);
   };
+  
+  
 
   return (
     <S.PageWrapper>

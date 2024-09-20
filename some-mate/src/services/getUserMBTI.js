@@ -1,3 +1,4 @@
+// getUserMBTI.js
 import axios from 'axios';
 
 export const updateUserMBTI = async (userIdx) => {
@@ -11,3 +12,4 @@ export const updateUserMBTI = async (userIdx) => {
     console.log(e);
   }
 };
+
