@@ -9,8 +9,10 @@ import {
   ButtonContainer,
   Container,
   Title,
+  ErrorMessage,
 } from './SignPage2.styled';
 import { useUser } from '../../Context/userContext.jsx';
+import { checkUserId } from '../../services/checkUserId';
 
 function SignPage2() {
   const { userData, updateUser } = useUser(); // 전역 상태 사용
@@ -20,7 +22,20 @@ function SignPage2() {
   const [user_id, setUserID] = useState('');
   const [password, setPassword] = useState('');
   const [age, setAge] = useState('');
+  const [userIdError, setUserIdError] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user_id) {
+      checkUserId(user_id).then((isAvailable) => {
+        if (isAvailable) {
+          setUserIdError(''); // 사용 가능
+        } else {
+          setUserIdError('이미 사용 중인 아이디입니다.');
+        }
+      });
+    }
+  }, [user_id]);
 
   useEffect(() => {
     setButtonDisabled(!(name && user_id && password && age));
@@ -31,6 +46,10 @@ function SignPage2() {
       alert('모든 정보를 입력해주세요.');
       return;
     }
+    if (userIdError) {
+      alert(userIdError);
+      return;
+    }
     // 사용자 입력을 전역 상태에 저장
     updateUser({ name, user_id, password, age });
     navigate('/sign3');
@@ -38,9 +57,10 @@ function SignPage2() {
 
   return (
     <Container>
-         <ProgressBar progress={66} timeLeft="가입까지 15초 남았어요!" />
-         <Title>
-        당신의 정보를<br />
+      <ProgressBar progress={66} timeLeft="가입까지 15초 남았어요!" />
+      <Title>
+        당신의 정보를
+        <br />
         <span>모두</span> 작성해주세요
       </Title>
       <GenderCard imageSrc={QuCharactor} title="빠짐없이 다 작성해줘!" />
@@ -50,18 +70,13 @@ function SignPage2() {
         value={name}
         onChange={(e) => setName(e.target.value)} // 이름 상태 업데이트
       />
-      {/* <InputBox
-        type="text"
-        placeholder="카카오톡 채팅방 URL"
-        value={openChatLink}
-        onChange={(e) => setOpenChatLink(e.target.value)} // 카카오톡 채팅방 URL 상태 업데이트
-      /> */}
       <InputBox
         type="text"
         placeholder="아이디"
         value={user_id}
         onChange={(e) => setUserID(e.target.value)} // 아이디 상태 업데이트
       />
+      {userIdError && <ErrorMessage>{userIdError}</ErrorMessage>}
       <InputBox
         type="password"
         placeholder="비밀번호"
@@ -74,15 +89,9 @@ function SignPage2() {
         value={age}
         onChange={(e) => setAge(e.target.value)} // 나이 상태 업데이트
       />
-        <ButtonContainer>
-        <Button
-        width={320}
-        theme="gray"
-        onClick={handleNext}
-        text="다음으로"
-      />
-        </ButtonContainer>
- 
+      <ButtonContainer>
+        <Button width={320} theme="gray" onClick={handleNext} text="다음으로" />
+      </ButtonContainer>
     </Container>
   );
 }
