@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // Button.js
 import * as S from './Button.styled';
 
@@ -18,6 +19,11 @@ export default function Button({ text, width, theme, onClick }) {
         <S.BlueButton width={width} theme={theme} onClick={onClick}>
           {text}
         </S.BlueButton>
+      )}
+       {theme === 'brown' && (
+        <S.BrownButton width={width} theme={theme} onClick={onClick}>
+          {text}
+        </S.BrownButton>
       )}
     </>
   );
