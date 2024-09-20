@@ -1,18 +1,15 @@
-// checkUserId.js
 import axios from 'axios';
 
-export const checkUserIdAvailability = async (user_id) => {
-  const URL = import.meta.env.VITE_API_URL; // Ensure this is correctly set
-  try {
-    const encodedUserId = encodeURIComponent(user_id);
-    const response = await axios.get(
-      `${URL}/user/check-username/${encodedUserId}`
-    );
+const URL = import.meta.env.VITE_API_URL;
 
-    return response.data.available; // 서버에서 'available' 필드 반환
+export const checkUserId = async (user_id) => {
+  try {
+    const response = await axios.get(`${URL}/user/checkUserId`, {
+      params: { userId: user_id },
+    });
+    return response.data;
   } catch (error) {
-    console.error('아이디 중복 검사 중 오류 발생:', error);
+    console.error('Error checking user ID:', error);
     return false;
   }
 };
-    

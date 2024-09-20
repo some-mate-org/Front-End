@@ -12,7 +12,7 @@ export const Title = styled.h2`
   margin-top: 30px;
 
   span {
-    color: #F76767;
+    color: #f76767;
   }
 `;
 
@@ -35,35 +35,11 @@ export const InputContainer = styled.div`
   align-items: center;
 `;
 
-export const KakaoButton = styled.button`
-  margin-left: -20px;
-  width: 40px;   
-  height: 40px;
-  background-color: #ffeb00;
-  border: none;
-  border-radius: 50%; 
+export const ErrorMessage = styled.p`
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  cursor: pointer;
-  padding: 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-  &:hover {
-    background-color: #fdd835;
-  }
-
-  &:active {
-    background-color: #ffeb00;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-
-  img {
-    width: 24px;
-    height: 24px;
-  }
+  align-items: center;
 `;
-
-
-
-
