@@ -1,14 +1,13 @@
 import axios from 'axios';
 
 const postUserInfo = async (userData) => {
-  const URL = import.meta.env.VITE_API_URL; 
+  const URL = import.meta.env.VITE_API_URL;
 
   try {
-  
-    const response = await axios({
-      method: 'post',
-      url: `${URL}/user/register`,
-      data: userData
+    const response = await axios.post(`${URL}/user/register`, userData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
     return response.data;
   } catch (error) {

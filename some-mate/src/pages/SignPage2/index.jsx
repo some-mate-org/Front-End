@@ -16,23 +16,23 @@ function SignPage2() {
   const { userData, updateUser } = useUser(); // 전역 상태 사용
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [name, setName] = useState('');
-  const [openChatLink, setOpenChatLink] = useState('');
-  const [userID, setUserID] = useState('');
+  // const [openChatLink, setOpenChatLink] = useState('');
+  const [user_id, setUserID] = useState('');
   const [password, setPassword] = useState('');
   const [age, setAge] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
-    setButtonDisabled(!(name && userID && password && age));
-  }, [name, userID, password, age]);
+    setButtonDisabled(!(name && user_id && password && age));
+  }, [name, user_id, password, age]);
 
   const handleNext = () => {
-    if (!name || !openChatLink || !userID || !password || !age) {
+    if (!name || !user_id || !password || !age) {
       alert('모든 정보를 입력해주세요.');
       return;
     }
     // 사용자 입력을 전역 상태에 저장
-    updateUser({ name, openChatLink, userID, password, age });
+    updateUser({ name, user_id, password, age });
     navigate('/sign3');
   };
 
@@ -50,16 +50,16 @@ function SignPage2() {
         value={name}
         onChange={(e) => setName(e.target.value)} // 이름 상태 업데이트
       />
-      <InputBox
+      {/* <InputBox
         type="text"
         placeholder="카카오톡 채팅방 URL"
         value={openChatLink}
         onChange={(e) => setOpenChatLink(e.target.value)} // 카카오톡 채팅방 URL 상태 업데이트
-      />
+      /> */}
       <InputBox
         type="text"
         placeholder="아이디"
-        value={userID}
+        value={user_id}
         onChange={(e) => setUserID(e.target.value)} // 아이디 상태 업데이트
       />
       <InputBox

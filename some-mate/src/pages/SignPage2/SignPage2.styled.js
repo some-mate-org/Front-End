@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin-left: 27px;
+  margin-left: 37px;
   margin-bottom: 40px;
 `;
 
@@ -16,14 +16,6 @@ export const Title = styled.h2`
   }
 `;
 
-// export const GenderOptionsContainer = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   margin-top: 86px;
-//   margin-right: 26px;
-//   gap: 3px;
-// `;
-
 export const ButtonContainer = styled.div`
   margin-top: 37px;
 `;
@@ -37,3 +29,41 @@ export const TitleLogo = styled.div`
   width: fit-content;
   transform: translateX(-10px);
 `;
+
+export const InputContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const KakaoButton = styled.button`
+  margin-left: -20px;
+  width: 40px;   
+  height: 40px;
+  background-color: #ffeb00;
+  border: none;
+  border-radius: 50%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background-color: #fdd835;
+  }
+
+  &:active {
+    background-color: #ffeb00;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+`;
+
+
+
+
