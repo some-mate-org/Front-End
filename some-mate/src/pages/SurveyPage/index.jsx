@@ -5,7 +5,9 @@ import ProgressBar from '../../components/ProgressBar';
 import SurveyCard from '../../components/SurveyCard';
 import GenderCard from '../../components/GenderCard';
 import { fetchQuestion } from '../../services/surveyService';
+import postUserInfo from '../../services/postUserInfo';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../../Context/userContext.jsx';
 
 export default function SurveyPage() {
   const [question, setQuestion] = useState({});
@@ -14,13 +16,18 @@ export default function SurveyPage() {
   const [currentQuestionId, setCurrentQuestionId] = useState(1); 
   const [mbti, setMbti] = useState([]); // MBTI 배열 상태 추가
   const [progress, setProgress] = useState(0); 
+  const { userData, updateUser } = useUser();
   const TOTAL_QUESTIONS = 10; 
   const TOTAL_TIME = 60; 
   const [timeLeft, setTimeLeft] = useState(`완료까지 ${TOTAL_TIME}초 남았어요!`); 
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    console.log('Updated userData:', userData);
+ }, [userData]);
 
   useEffect(() => {
-    // 질문과 답변 옵션을 가져옴
+   // 질문과 답변 옵션을 가져옴
     const loadQuestion = async () => {
       try {
         const questionData = await fetchQuestion(currentQuestionId);
@@ -39,7 +46,7 @@ export default function SurveyPage() {
     loadQuestion();
   }, [currentQuestionId]);
 
-  useEffect(() => {
+   useEffect(() => {
     // 진행률 업데이트
     const newProgress = ((currentQuestionId - 1) / TOTAL_QUESTIONS) * 100;
     setProgress(newProgress);
@@ -65,7 +72,7 @@ export default function SurveyPage() {
     const nextQuestionId = currentQuestionId + 1;
 
     // 모든 질문이 끝났을 경우
-    if (nextQuestionId > TOTAL_QUESTIONS) {
+    if (nextQuestionId >TOTAL_QUESTIONS) {
       // 최종 MBTI 계산
       const calculateMBTI = () => {
         const countOccurrences = (arr, target) => arr.filter(item => item === target).length;
@@ -86,10 +93,19 @@ export default function SurveyPage() {
 
         return `${dominantEI}${dominantSN}${dominantTF}${dominantPJ}`;
       };
-
       const mbtiResult = calculateMBTI();
-      console.log('Final MBTI:', mbtiResult);
-      navigate(`/result/${mbtiResult.toLowerCase()}`); // 결과 페이지로 이동
+       updateUser({ "mbti" : mbtiResult });
+      
+      const userDataWithMBTI = { ...userData, "mbti": mbtiResult };
+      //post 요청
+      try {
+        const response = await postUserInfo(userDataWithMBTI);
+        if (response) {
+          navigate(`/result/${mbtiResult.toLowerCase()}`);
+        }
+      } catch (error) {
+        console.error('Error posting user data:', error);
+      }
     } else {
       setCurrentQuestionId(nextQuestionId);
     }
