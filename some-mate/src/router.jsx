@@ -10,7 +10,7 @@ import SurveyPage from './pages/SurveyPage';
 import ResultPage from './pages/ResultPage';
 import MatchingPage from './pages/MatchingPage';
 import LoginPage from './pages/LoginPage';
-import MainuserPage from './pages/MainuserPage';
+// import MainuserPage from './pages/MainuserPage';
 
 
 export const router = createBrowserRouter([
