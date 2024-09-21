@@ -29,7 +29,7 @@ function SignPage2() {
     if (user_id) {
       checkUserId(user_id).then((isAvailable) => {
         if (isAvailable) {
-          setUserIdError(''); // 사용 가능
+          setUserIdError('');
         } else {
           setUserIdError('이미 사용 중인 아이디입니다.');
         }
