@@ -76,59 +76,49 @@ export default function SurveyPage() {
   const handleAnswerSelect = async (value) => {
     setMbti((prevMbti) => {
       const updatedMbti = [...prevMbti, value];
-
+  
       if (currentQuestionId === TOTAL_QUESTIONS) {
         // 최종 MBTI 계산
         const calculateMBTI = () => {
           const countOccurrences = (arr, target) =>
             arr.filter((item) => item === target).length;
-
+  
           const E_count = countOccurrences(updatedMbti, 'E');
           const I_count = countOccurrences(updatedMbti, 'I');
           const dominantEI = E_count > I_count ? 'E' : 'I';
-
+  
           const T_count = countOccurrences(updatedMbti, 'T');
           const F_count = countOccurrences(updatedMbti, 'F');
           const dominantTF = T_count > F_count ? 'T' : 'F';
-
+  
           const P_count = countOccurrences(updatedMbti, 'P');
           const J_count = countOccurrences(updatedMbti, 'J');
           const dominantPJ = P_count > J_count ? 'P' : 'J';
-
+  
           const dominantSN = updatedMbti.includes('S') ? 'S' : 'N';
-
+  
           return `${dominantEI}${dominantSN}${dominantTF}${dominantPJ}`;
         };
-
+  
         const mbtiResult = calculateMBTI();
-        updateUser({ ...userData, mbti: mbtiResult });
-        navigate(`/result/${mbtiResult.toLowerCase()}`);
-
-        // const userDataWithMBTI = { ...userData, mbti: mbtiResult };
-
-        // async 함수 내에서 await 사용
-        // (async () => {
-        //   try {
-        //     const response = await postUserInfo(userDataWithMBTI);
-        //     if (response) {
-        //       console.log('User registered successfully:', response);
-        //       navigate(`/result/${mbtiResult.toLowerCase()}`);
-        //     }
-        //   } catch (error) {
-        //     console.error('Error posting user data:', error);
-        //   }
-
-        // })();
+  
+        // 상태 업데이트를 비동기로 처리
+        setTimeout(() => {
+          updateUser({ ...userData, mbti: mbtiResult });
+          navigate(`/result/${mbtiResult.toLowerCase()}`);
+        }, 0);  // 렌더링 후에 업데이트되도록 딜레이
+  
+        return updatedMbti;
       }
-
+  
       return updatedMbti;
     });
-
+  
     setAnswerList((prevAnswers) => [
       ...prevAnswers,
       { questionId: currentQuestionId, selectedAnswer: value },
     ]);
-
+  
     setCurrentQuestionId((prevId) => prevId + 1);
   };
 
