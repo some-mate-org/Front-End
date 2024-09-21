@@ -18,6 +18,11 @@ export default function MatchingPage() {
     setMatchedUserDesc(location.state.matchedUserDesc);
   }, []);
 
+  useEffect(() => {
+    console.log('matchedUserInfo : ', matchedUserInfo);
+    console.log('matchedUserDesc : ', matchedUserDesc);
+  });
+
   const handleClickBtn = () => {
     //매칭 히스토리에 추가
     // const userIdx = localStorage.getItem('userIdx');
