@@ -25,7 +25,7 @@ function SignPage2() {
   const [nameError, setNameError] = useState(''); // 이름 유효성 에러 상태
   const navigate = useNavigate();
 
-  // 이름 입력이 한글 또는 영어로만 되어 있는지 체크하는 함수
+  // 이름 입력이 한글 또는 영어로만 되어 있는지 체크함수
   const handleNameChange = (e) => {
     const input = e.target.value;
     const namePattern = /^[a-zA-Z\u3131-\u318E\uAC00-\uD7A3]+$/;
