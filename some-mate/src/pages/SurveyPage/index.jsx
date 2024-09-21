@@ -101,14 +101,24 @@ export default function SurveyPage() {
         };
 
         const mbtiResult = calculateMBTI();
+        updateUser({ ...userData, mbti: mbtiResult });
+        navigate(`/result/${mbtiResult.toLowerCase()}`);
 
-        // 상태 업데이트를 비동기로 처리
-        setTimeout(() => {
-          updateUser({ ...userData, mbti: mbtiResult });
-          navigate(`/result/${mbtiResult.toLowerCase()}`);
-        }, 0); // 렌더링 후에 업데이트되도록 딜레이
+        // const userDataWithMBTI = { ...userData, mbti: mbtiResult };
 
-        return updatedMbti;
+        // async 함수 내에서 await 사용
+        // (async () => {
+        //   try {
+        //     const response = await postUserInfo(userDataWithMBTI);
+        //     if (response) {
+        //       console.log('User registered successfully:', response);
+        //       navigate(`/result/${mbtiResult.toLowerCase()}`);
+        //     }
+        //   } catch (error) {
+        //     console.error('Error posting user data:', error);
+        //   }
+
+        // })();
       }
 
       return updatedMbti;
