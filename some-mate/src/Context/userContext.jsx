@@ -7,7 +7,7 @@ export const UserProvider = ({ children }) => {
     gender: '',
     name: '',
     openChatLink: '',
-    userID: '',
+    user_id: '',
     password: '',
     age: '',
     profile: '',

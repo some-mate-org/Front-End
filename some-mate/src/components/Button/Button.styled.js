@@ -10,6 +10,7 @@ export const GrayButton = styled.button`
   background-color: #737373;
   font-size: 16px;
   font-weight: bold;
+  text-align: center;
   color: white;
   margin-top: 1rem;
   cursor: pointer;
@@ -19,6 +20,20 @@ export const BlueButton = styled(GrayButton)`
   background-color: #8bc4ef;
   color: white;
   border: 2px solid #8bc4ef;
+  text-align: center;
+  ${({ theme }) =>
+    theme === 'white' &&
+    `
+    background-color: white;
+    color: #8bc4ef;
+  `}
+`;
+
+export const BrownButton = styled(GrayButton)`
+  background-color: #3B1B1B;
+  color: white;
+  border: 2px solid #3B1B1B;
+  text-align: center;
   ${({ theme }) =>
     theme === 'white' &&
     `

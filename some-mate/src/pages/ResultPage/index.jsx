@@ -5,36 +5,43 @@ import Button from '../../components/Button';
 import { useEffect, useState } from 'react';
 import { getMBTIInfo } from '../../services/getMBTIInfo';
 import getMatchedUserInfo from '../../services/getMatchedUserInfo';
-import patchUserMBTI from '../../services/patchUserMBTI';
+// import patchUserMBTI from '../../services/patchUserMBTI';
+import postUserInfo from '../../services/postUserInfo';
+import { useUser } from '../../Context/userContext';
 
 export default function ResultPage() {
   const mbti = useParams().result;
   const [mbtiInfo, setMbtiInfo] = useState({});
   const [desc, setDesc] = useState([]);
   const [matchedUserInfo, setMatchedUserInfo] = useState(null);
+  const { userData } = useUser();
+
   const navigate = useNavigate();
 
   useEffect(() => {
     getMBTIInfo(mbti, setMbtiInfo, setDesc);
-    console.log(mbtiInfo);
+    // console.log(mbtiInfo);
+    console.log(userData);
   }, []);
 
   async function handleAcceptBtn() {
-    const userIdx = 8; //세션에 저장된 userIdx값으로 수정 필요
+    const userId = userData['user_id'];
+    console.log('userId : ', userId);
 
     try {
-      await getMatchedUserInfo(userIdx, setMatchedUserInfo, setDesc);
+      const insertRes = await postUserInfo(userData);
+      console.log('insertRes : ', insertRes);
+
+      if (insertRes) {
+        console.log('insert success');
+        await getMatchedUserInfo(userId, setMatchedUserInfo, setDesc);
+      } else {
+        alert('insert fail');
+      }
     } catch (error) {
       console.error('Error fetching matched user info:', error);
     }
   }
-
-  //마운트 시 유저 엠비티아이 변경
-  useEffect(() => {
-    // const userIdx = sessionStorage.getItem("userIdx")
-    const userIdx = 8;
-    patchUserMBTI(userIdx, mbti.toUpperCase());
-  }, []);
 
   // matchedUserInfo가 유효한 값일 때만 navigate 동작
   useEffect(() => {
@@ -49,7 +56,7 @@ export default function ResultPage() {
   }, [matchedUserInfo, navigate]); // matchedUserInfo 변경될 때만 동작
 
   function handleReplayBtn() {
-    // navigate('/설문조사URL');
+    navigate('/survey');
   }
 
   return (
@@ -84,13 +91,13 @@ export default function ResultPage() {
         text="수락하기"
         width={314}
         theme="blue"
-        onClickFunc={handleAcceptBtn}
+        onClick={handleAcceptBtn}
       />
       <Button
         text="다시하기"
         width={314}
         theme="white"
-        onClickFunc={handleReplayBtn}
+        onClick={handleReplayBtn}
       />
     </S.Wrapper>
   );

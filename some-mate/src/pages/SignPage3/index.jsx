@@ -1,72 +1,64 @@
-import { useState } from 'react';
-import ProgressBar from '../../components/ProgressBar';
-import GenderCard from '../../components/GenderCard';
-import ProfileOptionCard from '../../components/ProfileOptionCard';
-import QuCharactor from '../../assets/QuCharactor.svg';
-import OwlIcon from '../../assets/profile/owl.svg';
-import FoxIcon from '../../assets/profile/fox.svg';
-import DogIcon from '../../assets/profile/dog.svg';
-import CatIcon from '../../assets/profile/cat.svg';
+/* eslint-disable no-unused-vars */
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import Button from '../../components/Button';
-import { useUser } from '../../Context/userContext.jsx';
 import { useNavigate } from 'react-router-dom';
+import InputBox from '../../components/InputBox';
+import kakaoIcon from '../../assets/logo/KakaoTalk_logo.png';
+import GenderCard from '../../components/GenderCard';
+import QuCharactor from '../../assets/QuCharactor.svg';
+import ProgressBar from '../../components/ProgressBar';
 import {
+  ButtonContainer,
   Container,
   Title,
-  ProfileOptionsContainer,
-  ButtonContainer,
-} from './SignPage3.styled.js';
+  InputContainer,
+  KakaoIconContainer,
+} from './SignPage3.styled';
+import { useUser } from '../../Context/userContext.jsx';
 
 function SignPage3() {
-  const { userData, updateUser } = useUser();
-  const [profile, setProfile] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { userData, updateUser } = useUser(); // 전역 상태 사용
+  const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [openChatLink, setOpenChatLink] = useState('');
   const navigate = useNavigate();
-
-  const handleNext = () => {
-    console.log('selectedProfile:', profile);
-    if (!profile) {
-      alert('프로필 사진을 선택해주세요.');
+  const handleNext = async () => {
+    if (!openChatLink) {
+      alert('카카오톡 오픈채팅방 URL를 입력해주세요.');
       return;
     }
-    updateUser({ profile });
-    navigate('/survey');
+    updateUser({ openChatLink });
+    navigate('/sign4');
   };
 
   return (
     <Container>
-      <ProgressBar progress={80} timeLeft="가입까지 1초 남았어요!" />
+      <ProgressBar progress={75} timeLeft="가입까지 10초 남았어요!" />
       <Title>
-        썸메이트 <br />
-        <span>프로필</span> 을 만들어봐요!
+        카카오톡에서
+        <br />
+        <span>오픈 채팅방 URL</span> 작성해주세요
       </Title>
-      <GenderCard imageSrc={QuCharactor} title="원하는 프로필을 골라줘!" />
-      <ProfileOptionsContainer>
-        <ProfileOptionCard
-          imageSrc={OwlIcon}
-          isSelected={profile === 'owl'}
-          onClick={() => setProfile('owl')}
+      <GenderCard imageSrc={QuCharactor} title=" 매칭을위해 URL를 가져와줘!" />
+      <InputContainer>
+        <KakaoIconContainer>
+          <img src={kakaoIcon} alt="KakaoTalk" />
+        </KakaoIconContainer>
+        <InputBox
+          type="text"
+          placeholder="카카오톡 채팅방 URL"
+          value={openChatLink}
+          onChange={(e) => setOpenChatLink(e.target.value)} // 카카오톡 채팅방 URL 상태 업데이트
         />
-        <ProfileOptionCard
-          imageSrc={CatIcon}
-          isSelected={profile === 'cat'}
-          onClick={() => setProfile('cat')}
-        />
-      </ProfileOptionsContainer>
-      <ProfileOptionsContainer>
-        <ProfileOptionCard
-          imageSrc={DogIcon}
-          isSelected={profile === 'dog'}
-          onClick={() => setProfile('dog')}
-        />
-        <ProfileOptionCard
-          imageSrc={FoxIcon}
-          isSelected={profile === 'fox'}
-          onClick={() => setProfile('fox')}
-        />
-      </ProfileOptionsContainer>
+      </InputContainer>
       <ButtonContainer>
-        <Button width={314} onClick={handleNext} theme={'gray'} text="다음으로" />
+        <Button
+          width={320}
+          theme="brown"
+          onClick={() => (window.location.href = 'kakaolink://')}
+          text="카카오톡 열기"
+        />
+        <Button width={320} theme="gray" onClick={handleNext} text="다음으로" />
       </ButtonContainer>
     </Container>
   );
