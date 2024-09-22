@@ -11,7 +11,7 @@ import SurveyPage from './pages/SurveyPage';
 import ResultPage from './pages/ResultPage';
 import MatchingPage from './pages/MatchingPage';
 import LoginPage from './pages/LoginPage';
-// import MainuserPage from './pages/MainuserPage';
+import MainuserPage from './pages/MainuserPage';
 
 
 export const router = createBrowserRouter([
@@ -59,5 +59,10 @@ export const router = createBrowserRouter([
     path: '/survey',
     element: <PageWrapper />,
     children: [{ index: true, element: <SurveyPage /> }],
+  },
+  {
+    path: '/mainuser',
+    element: <PageWrapper />,
+    children: [{ index: true, element: <MainuserPage /> }],
   },
 ]);
