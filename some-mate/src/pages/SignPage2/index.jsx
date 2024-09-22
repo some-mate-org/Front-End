@@ -18,7 +18,7 @@ function SignPage2() {
   const { userData, updateUser } = useUser(); // 전역 상태 사용
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [name, setName] = useState('');
-  const [user_id, setUserID] = useState('');
+  const [userId, setUserID] = useState('');
   const [password, setPassword] = useState('');
   const [age, setAge] = useState('');
   const [userIdError, setUserIdError] = useState('');
@@ -46,8 +46,8 @@ function SignPage2() {
   };
 
   useEffect(() => {
-    if (user_id) {
-      checkUserId(user_id).then((isAvailable) => {
+    if (userId) {
+      checkUserId(userId).then((isAvailable) => {
         if (isAvailable) {
           setUserIdError('');
         } else {
@@ -55,14 +55,14 @@ function SignPage2() {
         }
       });
     }
-  }, [user_id]);
+  }, [userId]);
 
   useEffect(() => {
-    setButtonDisabled(!(name && user_id && password && age && !nameError));
-  }, [name, user_id, password, age, nameError]);
+    setButtonDisabled(!(name && userId && password && age && !nameError));
+  }, [name, userId, password, age, nameError]);
 
   const handleNext = () => {
-    if (!name || !user_id || !password || !age) {
+    if (!name || !userId || !password || !age) {
       alert('모든 정보를 입력해주세요.');
       return;
     }
@@ -75,7 +75,7 @@ function SignPage2() {
       return;
     }
     // 사용자 입력을 전역 상태에 저장
-    updateUser({ name, user_id, password, age });
+    updateUser({ name, userId, password, age });
     navigate('/sign3');
   };
 
@@ -98,7 +98,7 @@ function SignPage2() {
       <InputBox
         type="text"
         placeholder="아이디"
-        value={user_id}
+        value={userId}
         onChange={(e) => setUserID(e.target.value)} // 아이디 상태 업데이트
       />
       {userIdError && <ErrorMessage>{userIdError}</ErrorMessage>}
