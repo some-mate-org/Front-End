@@ -26,11 +26,10 @@ export default function MatchingPage() {
   const handleClickBtn = () => {
     //매칭 히스토리에 추가
     // const userIdx = localStorage.getItem('userIdx');
-    const userIdx = 8;
+    const userIdx = 10;
     const result = postMatchingHistory(userIdx, matchedUserInfo.idx);
     console.log('result :' + result);
-
-    navigate('/');
+    navigate('/mainuser');
   };
 
   return (

@@ -5,10 +5,12 @@ import check from '../../assets/check.svg';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
+// import { useUser } from '../../Context/userContext.jsx';
 
 export default function LoginPage() {
   const navigate = useNavigate();
   const [userId, setUserId] = useState('');
+  // const { userData, updateUser } = useUser(); // 전역 상태 사용
   const [password, setPassword] = useState('');
 
   // 서버에 로그인 요청을 보내는 함수
@@ -22,10 +24,16 @@ export default function LoginPage() {
       });
 
       const { accessToken, refreshToken } = response.data;
+      console.log(response.data);
+
+      console.log('accessToken:', accessToken);
+      console.log('refreshToken:', refreshToken);
+
       localStorage.setItem('accessToken', accessToken);
       localStorage.setItem('refreshToken', refreshToken);
 
-      navigate('/');
+
+      navigate('/mainuser');
     } catch (error) {
       console.error('로그인 실패:', error);
       alert('아이디 또는 비밀번호가 맞지 않습니다. 다시 확인해주세요.');
