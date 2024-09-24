@@ -48,6 +48,7 @@ export default function ResultPage() {
     if (matchedUserInfo !== null) {
       navigate('/matching', {
         state: {
+          userId : userData['user_id'],
           matchedUserInfo: matchedUserInfo,
           matchedUserDesc: desc,
         },

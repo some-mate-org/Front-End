@@ -6,31 +6,43 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import postMatchingHistory from '../../services/postMatchingHistory';
 import Button from '../../components/Button';
+import Modal from '../../components/Modal';
 
 export default function MatchingPage() {
   const location = useLocation();
+  const [userId, setUserId] = useState('');
   const [matchedUserInfo, setMatchedUserInfo] = useState({});
   const [matchedUserDesc, setMatchedUserDesc] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
     setMatchedUserInfo(location.state.matchedUserInfo);
     setMatchedUserDesc(location.state.matchedUserDesc);
+    setUserId(location.state.userId);
   }, []);
 
   useEffect(() => {
     console.log('matchedUserInfo : ', matchedUserInfo);
     console.log('matchedUserDesc : ', matchedUserDesc);
+    console.log('userId : ', userId);
   });
 
-  const handleClickBtn = () => {
+  const modalCancelBtn = () => {
+    setIsModalOpen(false);
+  };
+
+  const modalConfirmBtn = () => {
     //매칭 히스토리에 추가
-    // const userIdx = localStorage.getItem('userIdx');
-    const userIdx = 8;
-    const result = postMatchingHistory(userIdx, matchedUserInfo.idx);
+    const result = postMatchingHistory(userId, matchedUserInfo.idx);
     console.log('result :' + result);
 
     navigate('/');
+  };
+
+  const handleClickBtn = () => {
+    setIsModalOpen(true);
   };
 
   return (
@@ -52,9 +64,17 @@ export default function MatchingPage() {
           width={100}
           style={{ margin: 0 }}
           text="나가기"
-          onClickFunc={handleClickBtn}
+          onClick={handleClickBtn}
         />
       </S.BottomWrapper>
+      {isModalOpen && (
+        <Modal
+          cancelFunc={modalCancelBtn}
+          confirmFunc={modalConfirmBtn}
+          title="정말 나가시겠습니까?"
+          text="지금 나가시는 경우, 현재 매칭된 썸메이트와는 다시 매칭되지 않습니다!"
+        />
+      )}
     </S.Container>
   );
 }

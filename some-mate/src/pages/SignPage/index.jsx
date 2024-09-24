@@ -26,6 +26,10 @@ function SignPage() {
   const navigate = useNavigate();
 
   const handleModalClose = () => {
+    navigate('/');
+  };
+
+  const handleModalNext = () => {
     setIsModalOpen(false);
   };
 
@@ -61,7 +65,14 @@ function SignPage() {
       <ButtonContainer>
         <Button width={320} theme="gray" onClick={handleNext} text="다음으로" />
       </ButtonContainer>
-      {isModalOpen && <Modal onClose={handleModalClose} />}
+      {isModalOpen && (
+        <Modal
+          confirmFunc={handleModalNext}
+          cancelFunc={handleModalClose}
+          title="개인정보 수집 및 이용 동의"
+          text="썸메이트 매칭을 위해 개인정보를 수집 및 이용하며, 자세한 사항은 개인정보 방침을 확인해주시기 바랍니다."
+        />
+      )}
     </Container>
   );
 }
