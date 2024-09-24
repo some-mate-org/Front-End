@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const postMatchingHistory = async (userIdx, recommendedUserIdx) => {
+const postMatchingHistory = async (userId, recommendedUserIdx) => {
   const URL = import.meta.env.VITE_API_URL;
 
   try {
@@ -8,7 +8,7 @@ const postMatchingHistory = async (userIdx, recommendedUserIdx) => {
       method: 'post',
       url: `${URL}/matching/history/add`,
       data: {
-        my_idx: userIdx,
+        userId: userId,
         recommended_idx: recommendedUserIdx,
       },
     });
