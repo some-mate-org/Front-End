@@ -22,15 +22,21 @@ export default function LoginPage() {
       });
 
       const { accessToken, refreshToken } = response.data;
+      console.log(response.data);
+
+      console.log('accessToken:', accessToken);
+      console.log('refreshToken:', refreshToken);
+
       localStorage.setItem('accessToken', accessToken);
       localStorage.setItem('refreshToken', refreshToken);
 
-      navigate('/');
+      navigate('/mainuser');
     } catch (error) {
       console.error('로그인 실패:', error);
       alert('아이디 또는 비밀번호가 맞지 않습니다. 다시 확인해주세요.');
     }
   };
+
 
   const handleSignupClick = () => {
     navigate('/sign');

@@ -15,6 +15,7 @@ import {
   Title,
   GenderOptionsContainer,
   ButtonContainer,
+  QuestionWrapper,
 } from './SignPage.styled';
 import { useNavigate } from 'react-router-dom';
 
@@ -46,8 +47,10 @@ function SignPage() {
   return (
     <Container>
       <ProgressBar progress={33} timeLeft="가입까지 30초 남았어요!" />
-      <Title>성별을 알려주세요</Title>
-      <GenderCard imageSrc={QuCharactor} title="너의 성별은 뭐야?" />
+      <QuestionWrapper>
+        <Title>성별을 알려주세요</Title>
+        <GenderCard imageSrc={QuCharactor} title="너의 성별은 뭐야?" />
+      </QuestionWrapper>
       <GenderOptionsContainer>
         <GenderOptionCard
           imageSrc={MaleIcon}

@@ -10,6 +10,7 @@ import {
   Container,
   Title,
   ErrorMessage,
+  QuestionWrapper,
 } from './SignPage2.styled';
 import { useUser } from '../../Context/userContext.jsx';
 import { checkUserId } from '../../services/checkUserId';
@@ -46,6 +47,7 @@ function SignPage2() {
   };
 
   useEffect(() => {
+    console.log('userId 변경!', userId);
     if (userId) {
       checkUserId(userId).then((isAvailable) => {
         if (isAvailable) {
@@ -82,12 +84,14 @@ function SignPage2() {
   return (
     <Container>
       <ProgressBar progress={66} timeLeft="가입까지 15초 남았어요!" />
+      <QuestionWrapper>
       <Title>
         당신의 정보를
         <br />
         <span>모두</span> 작성해주세요
       </Title>
       <GenderCard imageSrc={QuCharactor} title="빠짐없이 다 작성해줘!" />
+      </QuestionWrapper>
       <InputBox
         type="text"
         placeholder="이름"
@@ -115,7 +119,13 @@ function SignPage2() {
         onChange={handleAgeChange} // 나이 상태 업데이트 및 숫자만 허용
       />
       <ButtonContainer>
-        <Button width={320} theme="gray" onClick={handleNext} text="다음으로" disabled={buttonDisabled} />
+        <Button
+          width={320}
+          theme="gray"
+          onClick={handleNext}
+          text="다음으로"
+          disabled={buttonDisabled}
+        />
       </ButtonContainer>
     </Container>
   );

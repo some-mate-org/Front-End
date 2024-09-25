@@ -2,32 +2,37 @@ import * as S from './MatchingPage.styled';
 import MatchingPageLogo from '../../assets/logo/MatchingPageLogo.svg?react';
 import MatchedUserProfile from '../../components/MatchedUserProfile';
 import MatchingLogo from '../../assets/logo/matchingLogo.svg?react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import postMatchingHistory from '../../services/postMatchingHistory';
 import Button from '../../components/Button';
 import Modal from '../../components/Modal';
+import getMatchedUserInfo from '../../services/getMatchedUserInfo';
 
 export default function MatchingPage() {
-  const location = useLocation();
-  const [userId, setUserId] = useState('');
+  // const [userId, setUserId] = useState('');
   const [matchedUserInfo, setMatchedUserInfo] = useState({});
   const [matchedUserDesc, setMatchedUserDesc] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const accessToken = localStorage.getItem('accessToken');
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    setMatchedUserInfo(location.state.matchedUserInfo);
-    setMatchedUserDesc(location.state.matchedUserDesc);
-    setUserId(location.state.userId);
-  }, []);
+    // setMatchedUserInfo(location.state.matchedUserInfo);
+    // setMatchedUserDesc(location.state.matchedUserDesc);
+    const loadInfo = async () => {
+      if (!accessToken) navigate('/login');
+      else
+        await getMatchedUserInfo(
+          setMatchedUserInfo,
+          setMatchedUserDesc,
+          accessToken
+        );
+    };
 
-  useEffect(() => {
-    console.log('matchedUserInfo : ', matchedUserInfo);
-    console.log('matchedUserDesc : ', matchedUserDesc);
-    console.log('userId : ', userId);
-  });
+    loadInfo();
+  }, []);
 
   const modalCancelBtn = () => {
     setIsModalOpen(false);
@@ -35,10 +40,10 @@ export default function MatchingPage() {
 
   const modalConfirmBtn = () => {
     //매칭 히스토리에 추가
-    const result = postMatchingHistory(userId, matchedUserInfo.idx);
+    const result = postMatchingHistory(matchedUserInfo.idx, accessToken);
     console.log('result :' + result);
 
-    navigate('/');
+    navigate('/mainuser');
   };
 
   const handleClickBtn = () => {

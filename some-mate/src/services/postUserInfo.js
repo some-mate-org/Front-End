@@ -7,7 +7,7 @@ const postUserInfo = async (userData) => {
     const response = await axios.post(`${URL}/user/register`, userData, {
       headers: {
         'Content-Type': 'application/json',
-    },
+      },
     });
     return response.data;
   } catch (error) {
