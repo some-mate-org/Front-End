@@ -11,7 +11,13 @@ import DogIcon from '../../assets/profile/dog.svg';
 import CatIcon from '../../assets/profile/cat.svg';
 
 export default function MainuserPage() {
-  const [userInfo, setUserInfo] = useState({ name: '', age: '', mbti: '', profile: '' , gender: ''});
+  const [userInfo, setUserInfo] = useState({
+    name: '',
+    age: '',
+    mbti: '',
+    profile: '',
+    gender: '',
+  });
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
@@ -19,9 +25,11 @@ export default function MainuserPage() {
   const refreshAccessToken = async () => {
     const URL = import.meta.env.VITE_API_URL;
     const refreshToken = localStorage.getItem('refreshToken');
-    
+
     try {
-      const response = await axios.post(`${URL}/user/refresh`, { refreshToken });
+      const response = await axios.post(`${URL}/user/refresh`, {
+        refreshToken,
+      });
       const newAccessToken = response.data.accessToken;
       localStorage.setItem('accessToken', newAccessToken);
       return newAccessToken;
@@ -53,11 +61,10 @@ export default function MainuserPage() {
   // 사용자 정보를 가져오는 함수
   const fetchUserInfo = async (token) => {
     const URL = import.meta.env.VITE_API_URL;
-    
     try {
       const response = await axios.get(`${URL}/user/profile`, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`, // Bearer 토큰 형식으로 전송
         },
       });
 
@@ -74,7 +81,9 @@ export default function MainuserPage() {
         if (newAccessToken) {
           fetchUserInfo(newAccessToken); // 새로 갱신한 토큰으로 다시 요청
         } else {
-          setErrorMessage('로그인 세션이 만료되었습니다. 다시 로그인해 주세요.');
+          setErrorMessage(
+            '로그인 세션이 만료되었습니다. 다시 로그인해 주세요.'
+          );
         }
       } else {
         setErrorMessage('사용자 정보를 불러오는데 실패했습니다.');
@@ -85,12 +94,14 @@ export default function MainuserPage() {
   // 첫 렌더링 시 사용자 정보 가져오기
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
+    console.log('AccessToken:', accessToken); // 확인용
     if (accessToken) {
       fetchUserInfo(accessToken);
     } else {
       setErrorMessage('로그인 정보가 없습니다.');
     }
-  }, []); // 빈 배열을 사용하여 첫 렌더링 시에만 실행
+  }, []);
+  // 빈 배열을 사용하여 첫 렌더링 시에만 실행
 
   // 프로필 이미지를 선택하는 함수
   const getProfileImage = (profile) => {
@@ -104,7 +115,18 @@ export default function MainuserPage() {
       case 'cat':
         return CatIcon;
       default:
-        return CatIcon; // 기본 프로필 이미지
+        return; // 기본 프로필 이미지
+    }
+  };
+
+  const getGender = (gender) => {
+    switch (gender) {
+      case 0:
+        return '남성';
+      case 1:
+        return '여성';
+      default:
+        return '없음';
     }
   };
 
@@ -116,11 +138,13 @@ export default function MainuserPage() {
         <img src={getProfileImage(userInfo.profile)} alt="Profile" />
       </S.ProfileImageContainer>
       <Info text={`이름: ${userInfo.name}`} />
-      <Info text={`성별: ${userInfo.gender}`} />
+      <Info text={`성별: ${getGender(userInfo.gender)}`} />
       <Info text={`나이: ${userInfo.age}`} />
       <Info text={`MBTI: ${userInfo.mbti}`} />
       <Button width={270} theme="gray" text="썸메이트 다시 찾아보기" />
-      <S.StyledLink to="/login" onClick={handleLogout}>로그아웃</S.StyledLink>
+      <S.StyledLink to="/login" onClick={handleLogout}>
+        로그아웃
+      </S.StyledLink>
     </S.Container>
   );
 }

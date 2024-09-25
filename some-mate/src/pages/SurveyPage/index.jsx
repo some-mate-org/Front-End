@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import QuCharactor from '../../assets/QuCharactor.svg';
 import * as S from './SurveyPage.styled';
@@ -5,16 +6,15 @@ import ProgressBar from '../../components/ProgressBar';
 import SurveyCard from '../../components/SurveyCard';
 import GenderCard from '../../components/GenderCard';
 import { fetchQuestion } from '../../services/surveyService';
-// import postUserInfo from '../../services/postUserInfo';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../Context/userContext.jsx';
 
 export default function SurveyPage() {
   const [question, setQuestion] = useState({});
   const [answerOptions, setAnswerOptions] = useState([]);
-  const [answerList, setAnswerList] = useState([]); // 선택한 값을 담음
+  const [answerList, setAnswerList] = useState([]);
   const [currentQuestionId, setCurrentQuestionId] = useState(1);
-  const [mbti, setMbti] = useState([]); // MBTI 배열 상태 추가
+  const [mbti, setMbti] = useState([]);
   const [progress, setProgress] = useState(0);
   const { userData, updateUser } = useUser();
   const TOTAL_QUESTIONS = 10;
@@ -30,7 +30,6 @@ export default function SurveyPage() {
 
   useEffect(() => {
     console.log(userData, currentQuestionId);
-    // 질문과 답변 옵션을 가져옴
 
     const loadQuestion = async () => {
       try {
@@ -57,11 +56,10 @@ export default function SurveyPage() {
   }, [currentQuestionId]);
 
   useEffect(() => {
-    // 진행률 업데이트
+
     const newProgress = ((currentQuestionId - 1) / TOTAL_QUESTIONS) * 100;
     setProgress(newProgress);
 
-    // 남은 시간 계산
     const elapsedTime =
       ((currentQuestionId - 1) / TOTAL_QUESTIONS) * TOTAL_TIME;
     const remainingTime = TOTAL_TIME - elapsedTime;
@@ -102,11 +100,10 @@ export default function SurveyPage() {
   
         const mbtiResult = calculateMBTI();
   
-        // 상태 업데이트를 비동기로 처리
         setTimeout(() => {
           updateUser({ ...userData, mbti: mbtiResult });
           navigate(`/result/${mbtiResult.toLowerCase()}`);
-        }, 0);  // 렌더링 후에 업데이트되도록 딜레이
+        }, 0);
   
         return updatedMbti;
       }
