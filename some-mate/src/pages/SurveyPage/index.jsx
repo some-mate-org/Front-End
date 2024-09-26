@@ -138,7 +138,7 @@ export default function SurveyPage() {
       <S.Question>
         <S.QuestionText>
           <Typical
-            steps={[title[0], 1000]}  //MBTI 질문 타이핑 효과 적용
+            steps={[title[0], 500]}  //MBTI 질문 타이핑 효과 적용
             loop={1}
             wrapper="span"
           />
