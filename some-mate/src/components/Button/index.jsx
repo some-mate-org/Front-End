@@ -25,6 +25,11 @@ export default function Button({ text, width, theme, onClick }) {
           {text}
         </S.BrownButton>
       )}
+      {theme === 'primary' && (
+        <S.PrimaryButton width={width} theme={theme} onClick={onClick}>
+          {text}
+        </S.PrimaryButton>
+      )}
     </>
   );
 }

@@ -41,3 +41,16 @@ export const BrownButton = styled(GrayButton)`
     color: #8bc4ef;
   `}
 `;
+
+export const PrimaryButton = styled(GrayButton)`
+  background-color: #FFFFFF;
+  color: #A3D1FB;
+  border: 2px solid #A3D1FB;
+  text-align: center;
+  ${({ theme }) =>
+    theme === 'white' &&
+    `
+    background-color: white;
+    color: #white;
+  `}
+`;

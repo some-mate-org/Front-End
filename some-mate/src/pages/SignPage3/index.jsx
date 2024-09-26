@@ -91,7 +91,13 @@ function SignPage3() {
           onClick={() => (window.location.href = 'kakaolink://')}
           text="카카오톡 열기"
         />
-        <Button width={320} theme="gray" onClick={handleNext} text="다음으로" />
+        <Button
+          width={320}
+          theme={openChatLink ? 'primary' : 'gray'} // openChatLink가 입력되면 primary 색상, 없으면 gray 색상
+          onClick={handleNext}
+          text="다음으로"
+        />
+        {/* <Button width={320} theme="gray" onClick={handleNext} text="다음으로" /> */}
       </ButtonContainer>
 
       <ChatModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

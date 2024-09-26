@@ -32,9 +32,14 @@ export default function LoginPage() {
     }
   };
 
-
   const handleSignupClick = () => {
     navigate('/sign');
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleLogin(); // Enter 키를 누르면 로그인 함수 호출
+    }
   };
 
   return (
@@ -44,9 +49,9 @@ export default function LoginPage() {
         운명의 상대를 만나보세요 :)
       </S.Text>
       <img src={check} alt="Check" />
-      <S.InfoText>아이디는 타인에게 노출되지 않아요</S.InfoText>
+      <S.InfoText>패스워드는 타인에게 노출되지 않아요</S.InfoText>
 
-      <InputBox
+      {/* <InputBox
         type="text"
         placeholder="아이디"
         value={userId}
@@ -58,15 +63,30 @@ export default function LoginPage() {
         placeholder="비밀번호"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+      /> */}
+
+      <InputBox
+        type="text"
+        placeholder="아이디"
+        value={userId}
+        onChange={(e) => setUserId(e.target.value)}
+        onKeyDown={handleKeyDown} // 입력 중 Enter 감지
+      />
+
+      <InputBox
+        type="password"
+        placeholder="비밀번호"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        onKeyDown={handleKeyDown} // 입력 중 Enter 감지
       />
 
       <S.ButtonContainer>
         <Button
           width={270}
-          theme="gray"
+          theme={userId && password ? 'primary' : 'gray'}
           text="로그인하기"
           onClick={handleLogin}
-          style={{ textDecoration: 'none' }}
         />
         <S.QuestionText>아직 가입하지 않았다면?</S.QuestionText>
         <Button
