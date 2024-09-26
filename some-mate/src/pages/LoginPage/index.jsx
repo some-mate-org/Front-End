@@ -32,6 +32,7 @@ export default function LoginPage() {
     }
   };
 
+
   const handleSignupClick = () => {
     navigate('/sign');
   };

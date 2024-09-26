@@ -4,16 +4,17 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Button from '../../components/Button';
 import { useEffect, useState } from 'react';
 import { getMBTIInfo } from '../../services/getMBTIInfo';
-import getMatchedUserInfo from '../../services/getMatchedUserInfo';
+// import getMatchedUserInfo from '../../services/getMatchedUserInfo';
 // import patchUserMBTI from '../../services/patchUserMBTI';
 import postUserInfo from '../../services/postUserInfo';
 import { useUser } from '../../Context/userContext';
+import postLogin from '../../services/postLogin';
 
 export default function ResultPage() {
   const mbti = useParams().result;
   const [mbtiInfo, setMbtiInfo] = useState({});
   const [desc, setDesc] = useState([]);
-  const [matchedUserInfo, setMatchedUserInfo] = useState(null);
+  // const [matchedUserInfo, setMatchedUserInfo] = useState(null);
   const { userData } = useUser();
 
   const navigate = useNavigate();
@@ -25,8 +26,10 @@ export default function ResultPage() {
   }, []);
 
   async function handleAcceptBtn() {
-    const userId = userData['user_id'];
+    const userId = userData['userId'];
+    const userPw = userData['password'];
     console.log('userId : ', userId);
+    console.log('userPw : ', userPw);
 
     try {
       const insertRes = await postUserInfo(userData);
@@ -34,7 +37,14 @@ export default function ResultPage() {
 
       if (insertRes) {
         console.log('insert success');
-        await getMatchedUserInfo(userId, setMatchedUserInfo, setDesc);
+
+        //여기서 로그인 처리 -> jwt 발급받게 할까? 그러고 나서 매칭으로 넘겼을 때 jwt 토큰 검증하도록
+        await postLogin(userId, userPw);
+        console.log(
+          'result 후 토큰 확인 : ',
+          localStorage.getItem('accessToken')
+        );
+        navigate('/matching');
       } else {
         alert('insert fail');
       }
@@ -42,18 +52,6 @@ export default function ResultPage() {
       console.error('Error fetching matched user info:', error);
     }
   }
-
-  // matchedUserInfo가 유효한 값일 때만 navigate 동작
-  useEffect(() => {
-    if (matchedUserInfo !== null) {
-      navigate('/matching', {
-        state: {
-          matchedUserInfo: matchedUserInfo,
-          matchedUserDesc: desc,
-        },
-      });
-    }
-  }, [matchedUserInfo, navigate]); // matchedUserInfo 변경될 때만 동작
 
   function handleReplayBtn() {
     navigate('/survey');

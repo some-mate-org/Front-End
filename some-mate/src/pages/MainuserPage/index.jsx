@@ -47,6 +47,10 @@ export default function MainuserPage() {
     navigate('/login');
   };
 
+  const handleRematching = () => {
+    navigate('/matching');
+  };
+
   // 사용자 정보를 설정하는 함수
   const setUserInfoData = (data) => {
     setUserInfo({
@@ -141,7 +145,12 @@ export default function MainuserPage() {
       <Info text={`성별: ${getGender(userInfo.gender)}`} />
       <Info text={`나이: ${userInfo.age}`} />
       <Info text={`MBTI: ${userInfo.mbti}`} />
-      <Button width={270} theme="gray" text="썸메이트 다시 찾아보기" />
+      <Button
+        width={270}
+        theme="gray"
+        text="썸메이트 다시 찾아보기"
+        onClick={handleRematching}
+      />
       <S.StyledLink to="/login" onClick={handleLogout}>
         로그아웃
       </S.StyledLink>

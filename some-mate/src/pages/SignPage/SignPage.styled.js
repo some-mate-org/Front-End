@@ -1,8 +1,17 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin-left: 27px;
-  margin-bottom: 40px;
+  /* margin-left: 27px;
+  margin-bottom: 40px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const QuestionWrapper = styled.div`
+  margin-right: auto;
+  margin-left: 2rem;
 `;
 
 export const Title = styled.h2`
@@ -12,7 +21,7 @@ export const Title = styled.h2`
   margin-top: 59px;
 
   span {
-    color: #F76767;
+    color: #f76767;
   }
 `;
 
@@ -20,7 +29,7 @@ export const GenderOptionsContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 86px;
-  margin-right: 26px;
+  /* margin-right: 26px; */
   gap: 34px;
 `;
 
@@ -37,4 +46,3 @@ export const TitleLogo = styled.div`
   width: fit-content;
   transform: translateX(-10px);
 `;
-

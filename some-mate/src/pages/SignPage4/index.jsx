@@ -16,6 +16,7 @@ import {
   Title,
   ProfileOptionsContainer,
   ButtonContainer,
+  QuestionWrapper,
 } from './SignPage4.styled.js';
 
 function SignPage4() {
@@ -37,11 +38,13 @@ function SignPage4() {
   return (
     <Container>
       <ProgressBar progress={90} timeLeft="가입까지 1초 남았어요!" />
-      <Title>
-        썸메이트 <br />
-        <span>프로필</span> 을 만들어봐요!
-      </Title>
-      <GenderCard imageSrc={QuCharactor} title="원하는 프로필을 골라줘!" />
+      <QuestionWrapper>
+        <Title>
+          썸메이트 <br />
+          <span>프로필</span> 을 만들어봐요!
+        </Title>
+        <GenderCard imageSrc={QuCharactor} title="원하는 프로필을 골라줘!" />
+      </QuestionWrapper>
       <ProfileOptionsContainer>
         <ProfileOptionCard
           imageSrc={OwlIcon}
@@ -67,7 +70,12 @@ function SignPage4() {
         />
       </ProfileOptionsContainer>
       <ButtonContainer>
-        <Button width={314} onClick={handleNext} theme={'gray'} text="다음으로" />
+        <Button
+          width={314}
+          onClick={handleNext}
+          theme={'gray'}
+          text="다음으로"
+        />
       </ButtonContainer>
     </Container>
   );

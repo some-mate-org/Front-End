@@ -25,9 +25,9 @@ export const OptionCardContainer = styled.button`
 `;
 
 export const OptionImage = styled.img`
-  width: 80px;  /* 이미지를 더 크게 조정 */
-  height: 80px; /* 이미지 크기를 가로와 세로 동일하게 맞춤 */
-  margin-bottom: 10px; /* 이미지와 텍스트 간의 간격 조정 */
+  /* width: 80px;  이미지를 더 크게 조정 */
+  /* height: 80px; 이미지 크기를 가로와 세로 동일하게 맞춤 */
+  /* margin-bottom: 10px; 이미지와 텍스트 간의 간격 조정 */
   object-fit: cover; /* 이미지 비율을 유지하면서 박스에 맞추기 */
   border-radius: 50%; /* 이미지가 원형으로 표시되도록 설정 */
 `;

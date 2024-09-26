@@ -1,15 +1,19 @@
 import axios from 'axios';
 
-const postMatchingHistory = async (userIdx, recommendedUserIdx) => {
+const postMatchingHistory = async (recommendedUserIdx, accessToken) => {
   const URL = import.meta.env.VITE_API_URL;
+
+  console.log('recommendedUserIdx:', recommendedUserIdx);
 
   try {
     const response = await axios({
       method: 'post',
       url: `${URL}/matching/history/add`,
       data: {
-        my_idx: userIdx,
         recommended_idx: recommendedUserIdx,
+      },
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
       },
     });
     return response.data;

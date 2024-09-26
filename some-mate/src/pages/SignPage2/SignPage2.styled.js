@@ -1,8 +1,17 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin-left: 37px;
-  margin-bottom: 40px;
+  /* margin-left: 27px;
+  margin-bottom: 40px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const QuestionWrapper = styled.div`
+  margin-right: auto;
+  margin-left: 2rem;
 `;
 
 export const Title = styled.h2`

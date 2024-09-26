@@ -2,34 +2,52 @@ import * as S from './MatchingPage.styled';
 import MatchingPageLogo from '../../assets/logo/MatchingPageLogo.svg?react';
 import MatchedUserProfile from '../../components/MatchedUserProfile';
 import MatchingLogo from '../../assets/logo/matchingLogo.svg?react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import postMatchingHistory from '../../services/postMatchingHistory';
 import Button from '../../components/Button';
+import Modal from '../../components/Modal';
+import getMatchedUserInfo from '../../services/getMatchedUserInfo';
 
 export default function MatchingPage() {
-  const location = useLocation();
+  // const [userId, setUserId] = useState('');
   const [matchedUserInfo, setMatchedUserInfo] = useState({});
   const [matchedUserDesc, setMatchedUserDesc] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const accessToken = localStorage.getItem('accessToken');
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    setMatchedUserInfo(location.state.matchedUserInfo);
-    setMatchedUserDesc(location.state.matchedUserDesc);
+    // setMatchedUserInfo(location.state.matchedUserInfo);
+    // setMatchedUserDesc(location.state.matchedUserDesc);
+    const loadInfo = async () => {
+      if (!accessToken) navigate('/login');
+      else
+        await getMatchedUserInfo(
+          setMatchedUserInfo,
+          setMatchedUserDesc,
+          accessToken
+        );
+    };
+
+    loadInfo();
   }, []);
 
-  useEffect(() => {
-    console.log('matchedUserInfo : ', matchedUserInfo);
-    console.log('matchedUserDesc : ', matchedUserDesc);
-  });
+  const modalCancelBtn = () => {
+    setIsModalOpen(false);
+  };
+
+  const modalConfirmBtn = () => {
+    //매칭 히스토리에 추가
+    const result = postMatchingHistory(matchedUserInfo.idx, accessToken);
+    console.log('result :' + result);
+
+    navigate('/mainuser');
+  };
 
   const handleClickBtn = () => {
-    //매칭 히스토리에 추가
-    // const userIdx = localStorage.getItem('userIdx');
-    const userIdx = 10;
-    const result = postMatchingHistory(userIdx, matchedUserInfo.idx);
-    console.log('result :' + result);
-    navigate('/mainuser');
+    setIsModalOpen(true);
   };
 
   return (
@@ -51,9 +69,17 @@ export default function MatchingPage() {
           width={100}
           style={{ margin: 0 }}
           text="나가기"
-          onClickFunc={handleClickBtn}
+          onClick={handleClickBtn}
         />
       </S.BottomWrapper>
+      {isModalOpen && (
+        <Modal
+          cancelFunc={modalCancelBtn}
+          confirmFunc={modalConfirmBtn}
+          title="정말 나가시겠습니까?"
+          text="지금 나가시는 경우, 현재 매칭된 썸메이트와는 다시 매칭되지 않습니다!"
+        />
+      )}
     </S.Container>
   );
 }
