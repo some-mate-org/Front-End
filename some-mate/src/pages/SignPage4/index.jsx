@@ -11,6 +11,7 @@ import CatIcon from '../../assets/profile/cat.svg';
 import Button from '../../components/Button';
 import { useUser } from '../../Context/userContext.jsx';
 import { useNavigate } from 'react-router-dom';
+import Typical from 'react-typical'; // 타이핑 효과를 위한 라이브러리
 import {
   Container,
   Title,
@@ -43,7 +44,14 @@ function SignPage4() {
           썸메이트 <br />
           <span>프로필</span> 을 만들어봐요!
         </Title>
-        <GenderCard imageSrc={QuCharactor} title="원하는 프로필을 골라줘!" />
+        {/* <GenderCard imageSrc={QuCharactor} title="원하는 프로필을 골라줘!" /> */}
+        <GenderCard imageSrc={QuCharactor} title={
+          <Typical
+            steps={['원하는 프로필을 골라줘!', 1000]} // 타이핑 효과 적용
+            loop={1}
+            wrapper="span"
+          /> 
+          }/>
       </QuestionWrapper>
       <ProfileOptionsContainer>
         <ProfileOptionCard

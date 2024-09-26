@@ -4,6 +4,7 @@ import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import InputBox from '../../components/InputBox';
 import GenderCard from '../../components/GenderCard';
+import Typical from 'react-typical'; // 타이핑 효과를 위한 라이브러리
 import QuCharactor from '../../assets/QuCharactor.svg';
 import ProgressBar from '../../components/ProgressBar';
 import {
@@ -95,7 +96,13 @@ function SignPage2() {
         <br />
         <span>모두</span> 작성해주세요
       </Title>
-      <GenderCard imageSrc={QuCharactor} title="빠짐없이 다 작성해줘!" />
+      <GenderCard imageSrc={QuCharactor} title={
+          <Typical
+            steps={['빠짐없이 다 작성해줘!', 1000]} // 타이핑 효과 적용
+            loop={1}
+            wrapper="span"
+          /> 
+          }/>
       </QuestionWrapper>
       <InputBox
         type="text"

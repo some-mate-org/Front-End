@@ -136,7 +136,13 @@ export default function SurveyPage() {
         <GenderCard imageSrc={QuCharactor} title={question.question1_title} />
       </S.CustomGenderCardWrapper>
       <S.Question>
-        <S.QuestionText>{title[0]}</S.QuestionText>
+        <S.QuestionText>
+          <Typical
+            steps={[title[0], 1000]}  //MBTI 질문 타이핑 효과 적용
+            loop={1}
+            wrapper="span"
+          />
+        </S.QuestionText>
         <S.Emoji>{title[1]}</S.Emoji>
       </S.Question>
 
