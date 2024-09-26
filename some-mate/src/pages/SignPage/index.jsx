@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import Modal from '../../components/Modal';
-// import SomateLogo from '../../assets/logo/SomeMateLogo.svg?react';
 import ProgressBar from '../../components/ProgressBar';
 import GenderCard from '../../components/GenderCard';
 import GenderOptionCard from '../../components/GenderOptionCard';

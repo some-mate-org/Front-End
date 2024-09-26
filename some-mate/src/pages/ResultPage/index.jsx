@@ -84,7 +84,9 @@ export default function ResultPage() {
       <S.Text size={12} color="#8BC4EF" style={{ padding: 0 }}>
         초대장이 날아왔어요!
       </S.Text>
-      <InvitationImg />
+      <S.Emoji>
+        <InvitationImg />
+      </S.Emoji>
       <Button
         text="수락하기"
         width={314}

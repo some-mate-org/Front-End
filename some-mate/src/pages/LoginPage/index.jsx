@@ -11,10 +11,9 @@ export default function LoginPage() {
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
 
-  // 서버에 로그인 요청을 보내는 함수
   const handleLogin = async () => {
     try {
-      console.log('user_id:', userId, 'password:', password); // 콘솔에 출력하여 값 확인
+      console.log('user_id:', userId, 'password:', password);
       const URL = import.meta.env.VITE_API_URL;
       const response = await axios.post(`${URL}/user/login`, {
         userId,
@@ -22,10 +21,6 @@ export default function LoginPage() {
       });
 
       const { accessToken, refreshToken } = response.data;
-      console.log(response.data);
-
-      console.log('accessToken:', accessToken);
-      console.log('refreshToken:', refreshToken);
 
       localStorage.setItem('accessToken', accessToken);
       localStorage.setItem('refreshToken', refreshToken);
@@ -51,7 +46,6 @@ export default function LoginPage() {
       <img src={check} alt="Check" />
       <S.InfoText>아이디는 타인에게 노출되지 않아요</S.InfoText>
 
-      {/* 아이디 입력 */}
       <InputBox
         type="text"
         placeholder="아이디"
@@ -59,7 +53,6 @@ export default function LoginPage() {
         onChange={(e) => setUserId(e.target.value)}
       />
 
-      {/* 비밀번호 입력 */}
       <InputBox
         type="password"
         placeholder="비밀번호"
@@ -68,16 +61,14 @@ export default function LoginPage() {
       />
 
       <S.ButtonContainer>
-        {/* 로그인 버튼 */}
         <Button
           width={270}
           theme="gray"
           text="로그인하기"
           onClick={handleLogin}
+          style={{ textDecoration: 'none' }}
         />
         <S.QuestionText>아직 가입하지 않았다면?</S.QuestionText>
-
-        {/* 회원가입 버튼 */}
         <Button
           width={270}
           theme="blue"

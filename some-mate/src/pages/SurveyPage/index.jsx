@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import QuCharactor from '../../assets/QuCharactor.svg';
 import * as S from './SurveyPage.styled';
+import Typical from 'react-typical'; // 타이핑 효과를 위한 라이브러리
 import ProgressBar from '../../components/ProgressBar';
 import SurveyCard from '../../components/SurveyCard';
 import GenderCard from '../../components/GenderCard';
@@ -13,9 +15,9 @@ export default function SurveyPage() {
   const [question, setQuestion] = useState({});
   const [title, setTitle] = useState([]);
   const [answerOptions, setAnswerOptions] = useState([]);
-  const [answerList, setAnswerList] = useState([]); // 선택한 값을 담음
+  const [answerList, setAnswerList] = useState([]);
   const [currentQuestionId, setCurrentQuestionId] = useState(1);
-  const [mbti, setMbti] = useState([]); // MBTI 배열 상태 추가
+  const [mbti, setMbti] = useState([]);
   const [progress, setProgress] = useState(0);
 
   const { userData, updateUser } = useUser();
@@ -137,6 +139,7 @@ export default function SurveyPage() {
         <S.QuestionText>{title[0]}</S.QuestionText>
         <S.Emoji>{title[1]}</S.Emoji>
       </S.Question>
+
       <S.AnswerWrapper>
         {answerOptions.map((option, index) => (
           <SurveyCard

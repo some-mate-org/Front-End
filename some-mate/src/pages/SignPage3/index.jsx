@@ -18,7 +18,7 @@ import {
 import { useUser } from '../../Context/userContext.jsx';
 
 function SignPage3() {
-  const { userData, updateUser } = useUser(); // 전역 상태 사용
+  const { userData, updateUser } = useUser();
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [openChatLink, setOpenChatLink] = useState('');
   const navigate = useNavigate();

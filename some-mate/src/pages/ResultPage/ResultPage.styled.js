@@ -59,3 +59,20 @@ export const Desc = styled.li`
     background-color: #737373; /* 마커의 색상 */
   }
 `;
+
+export const Emoji = styled.div`
+  text-align: center;
+  font-size: 40px;
+  display: inline-block;
+  animation: bounce 0.5s infinite; // 애니메이션 적용
+  transform-origin: center bottom; // 현재 위치에서 애니메이션 시작
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0); // 원래 위치
+    }
+    50% {
+      transform: translateY(-10px); // 위로 이동
+    }
+  }
+`
