@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const OptionCardContainer = styled.button`
   width: 155px;
   height: 202px;
-  background-color: #D7ECFF;
+  background-color: #d7ecff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,12 +14,13 @@ export const OptionCardContainer = styled.button`
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #BBDFFF; /* 호버 시 배경색 변경 */
+    background-color: #bbdfff; /* 호버 시 배경색 변경 */
   }
 
   &:focus {
     outline: none; /* 기본 포커스 스타일 제거 */
-    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.5); /* 포커스 시 외곽선 효과 */
+    background-color: #bbdfff;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.6); /* 포커스 시 외곽선 효과 */
   }
 `;
 

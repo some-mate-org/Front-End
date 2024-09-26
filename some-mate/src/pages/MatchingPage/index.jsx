@@ -23,12 +23,15 @@ export default function MatchingPage() {
     // setMatchedUserDesc(location.state.matchedUserDesc);
     const loadInfo = async () => {
       if (!accessToken) navigate('/login');
-      else
-        await getMatchedUserInfo(
+      else {
+        const isempty  = await getMatchedUserInfo(
           setMatchedUserInfo,
           setMatchedUserDesc,
           accessToken
         );
+
+        if(!isempty) navigate("/matching/fail")
+      }
     };
 
     loadInfo();
@@ -40,9 +43,10 @@ export default function MatchingPage() {
 
   const modalConfirmBtn = () => {
     //매칭 히스토리에 추가
-    const result = postMatchingHistory(matchedUserInfo.idx, accessToken);
-    console.log('result :' + result);
-
+    if (!matchedUserInfo) {
+      const result = postMatchingHistory(matchedUserInfo.idx, accessToken);
+      console.log('result :' + result);
+    }
     navigate('/mainuser');
   };
 
