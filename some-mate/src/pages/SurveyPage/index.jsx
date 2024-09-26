@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import QuCharactor from '../../assets/QuCharactor.svg';
 import * as S from './SurveyPage.styled';
+import Typical from 'react-typical'; // 타이핑 효과를 위한 라이브러리
 import ProgressBar from '../../components/ProgressBar';
 import SurveyCard from '../../components/SurveyCard';
 import GenderCard from '../../components/GenderCard';
@@ -127,6 +128,7 @@ export default function SurveyPage() {
       </S.CustomGenderCardWrapper>
 
       <S.Question>
+<<<<<<< Updated upstream
         {question.question2_title &&
         typeof question.question2_title === 'string' ? (
           <S.QuestionText>{question.question2_title}</S.QuestionText>
@@ -138,7 +140,18 @@ export default function SurveyPage() {
             <S.Emoji>{question.question2_title?.emoji || ''}</S.Emoji>
           </>
         )}
+=======
+        <S.QuestionText>
+          <Typical
+            steps={[title[0], 500]} // MBTI 설문조사 타이핑 효과
+            loop={1}
+            wrapper="span"
+          />
+        </S.QuestionText>
+        <S.Emoji>{title[1]}</S.Emoji>
+>>>>>>> Stashed changes
       </S.Question>
+
       <S.AnswerWrapper>
         {answerOptions.map((option, index) => (
           <SurveyCard
