@@ -1,44 +1,78 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin: 0 auto;
-  width: 90%;  // 컨테이너의 너비 조정
-  max-width: 500px;  // 최대 너비 설정
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+export const DescriptionText = styled.p`
+  font-size: 15px;
+  color: #737373;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  span {
+    color: #2287fe;
+  }
+`;
+export const GenderCardContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-left: 2rem;
+  margin-right: auto;
+`;
+export const DescriptionContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-left: 2rem;
+  margin-right: auto;
+`;
+
+export const QuestionIcon = styled.img`
+  margin-left: 20px;
+  cursor: pointer;
 `;
 
 export const Title = styled.h2`
-  text-align: center;  // 타이틀을 중앙 정렬
   color: #6b6969;
   font-size: 20px;
   margin-bottom: 20px;
-  
+  margin-top: 59px;
+  margin-right: auto;
+  margin-left: 2rem;
+
   span {
-    color: #F76767;
+    color: #f76767;
   }
 `;
 
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;  // 버튼을 중앙 정렬
+  align-items: center;
   text-align: center;
-  margin-top: 250px;
+  margin-top: 70px;
+  margin-left: 2rem;
+  margin-right: auto;
+  gap: 20px;
 `;
 
 export const InputContainer = styled.div`
   display: flex;
-  align-items: center;  // 이미지와 입력 상자를 중앙 정렬
+  align-items: center; // 이미지와 입력 상자를 중앙 정렬
   margin: 20px 0;
 `;
 
 export const KakaoButton = styled.button`
-  margin: 20px auto;  // 버튼을 중앙에 위치시키고 상하 여백 추가
-  width: 60px;   
+  margin: 20px auto; // 버튼을 중앙에 위치시키고 상하 여백 추가
+  width: 60px;
   height: 60px;
   background-color: #ffeb00;
   border: none;
-  border-radius: 50%; 
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,9 +96,9 @@ export const KakaoButton = styled.button`
 `;
 
 export const NormalButton = styled.button`
-  width: 100%;  // 버튼의 너비를 컨테이너 너비에 맞춤
-  padding: 10px 0;  // 패딩으로 버튼 높이 조정
-  margin-top: 10px;  // 상단 여백 추가
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 10px;
   background-color: #ffeb00;
   color: white;
   border: none;
@@ -78,15 +112,17 @@ export const NormalButton = styled.button`
 `;
 
 export const KakaoIconContainer = styled.div`
-  margin-right: 10px;  // 입력 상자와 이미지 사이의 여백 추가
+  margin-right: 10px;
   display: flex;
-  align-items: center;  // 이미지를 세로 중앙 정렬
-  margin: 28px auto;  // 버튼을 중앙에 위치시키고 상하 여백 추가
-  width: 50px;   
+  align-items: center;
+  margin: 28px auto;
+  width: 50px;
   height: 50px;
+  margin-left: 3rem;
+  margin-right: auto;
   background-color: #ffeb00;
   border: none;
-  border-radius: 20%; 
+  border-radius: 20%;
   display: flex;
   align-items: center;
   justify-content: center;
