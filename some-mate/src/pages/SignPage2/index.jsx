@@ -47,14 +47,8 @@ function SignPage2() {
   };
 
   useEffect(() => {
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
+
     // console.log('userId 변경!', userId);
->>>>>>> Stashed changes
-=======
-    console.log('userId 변경!', userId);
->>>>>>> develop
     if (userId) {
       checkUserId(userId).then((isAvailable) => {
         if (isAvailable) {
