@@ -47,8 +47,6 @@ function SignPage2() {
   };
 
   useEffect(() => {
-
-    // console.log('userId 변경!', userId);
     if (userId) {
       checkUserId(userId).then((isAvailable) => {
         if (isAvailable) {

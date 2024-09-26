@@ -24,7 +24,9 @@ export const Input = styled.input`
   
   
   &:focus {
-    outline: none; 
+    outline: none; /* 기본 포커스 스타일 제거 */
+    background-color: #bbdfff;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.6); /* 포커스 시 외곽선 효과 */
   }
 `;
 
