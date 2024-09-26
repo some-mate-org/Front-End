@@ -7,6 +7,7 @@ import InputBox from '../../components/InputBox';
 import kakaoIcon from '../../assets/logo/KakaoTalk_logo.png';
 import GenderCard from '../../components/GenderCard';
 import QuCharactor from '../../assets/QuCharactor.svg';
+import Typical from 'react-typical'; // 타이핑 효과를 위한 라이브러리
 import ProgressBar from '../../components/ProgressBar';
 import {
   ButtonContainer,
@@ -39,7 +40,14 @@ function SignPage3() {
         <br />
         <span>오픈 채팅방 URL</span> 작성해주세요
       </Title>
-      <GenderCard imageSrc={QuCharactor} title=" 매칭을위해 URL를 가져와줘!" />
+      <GenderCard imageSrc={QuCharactor} title={
+          <Typical
+            steps={['매칭을위해 URL를 가져와줘!', 1000]} // 타이핑 효과 적용
+            loop={1}
+            wrapper="span"
+          /> 
+          }/>
+      {/* <GenderCard imageSrc={QuCharactor} title=" 매칭을위해 URL를 가져와줘!" /> */}
       <InputContainer>
         <KakaoIconContainer>
           <img src={kakaoIcon} alt="KakaoTalk" />

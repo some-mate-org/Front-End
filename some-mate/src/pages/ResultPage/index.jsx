@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Button from '../../components/Button';
 import { useEffect, useState } from 'react';
 import { getMBTIInfo } from '../../services/getMBTIInfo';
+import Typical from 'react-typical'; // 타이핑 효과를 위한 라이브러리
 // import getMatchedUserInfo from '../../services/getMatchedUserInfo';
 // import patchUserMBTI from '../../services/patchUserMBTI';
 import postUserInfo from '../../services/postUserInfo';
