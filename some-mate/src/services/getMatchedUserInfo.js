@@ -12,9 +12,16 @@ const getMatchedUserInfo = async (setMatchedUserInfo, setDesc, accessToken) => {
         Authorization: `Bearer ${accessToken}`,
       },
     });
+    // console.log('matchedUser response :', response);
 
-    setMatchedUserInfo(response.data);
-    setDesc(response.data.desc.split('/'));
+    if (response.data.desc !== null) {
+      setMatchedUserInfo(response.data);
+      setDesc(response.data.desc.split('/'));
+      return true
+    }
+    else {
+      return false
+    }
   } catch (error) {
     console.error(error);
   }
