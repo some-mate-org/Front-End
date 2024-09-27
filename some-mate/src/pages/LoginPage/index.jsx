@@ -85,7 +85,7 @@ export default function LoginPage() {
         <S.ButtonContainer>
           <Button
             width={270}
-            theme={userId && password ? 'primary' : 'gray'}
+            theme={'primary'}
             text="로그인하기"
             onClick={handleLogin}
           />

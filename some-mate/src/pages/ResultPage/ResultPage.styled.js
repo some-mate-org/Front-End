@@ -65,7 +65,7 @@ export const Emoji = styled.div`
   text-align: center;
   font-size: 40px;
   display: inline-block;
-  animation: bounce 0.5s infinite; // 애니메이션 적용
+  animation: bounce 1s infinite; // 애니메이션 적용
   transform-origin: center bottom; // 현재 위치에서 애니메이션 시작
 
   @keyframes bounce {
