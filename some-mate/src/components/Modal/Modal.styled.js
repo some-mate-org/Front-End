@@ -33,7 +33,6 @@ export const ButtonContainer = styled.div`
 `;
 
 export const DelayButton = styled.button`
-    width: 13rem;
   height: 32px;
   border-radius: 16px;
   font-weight: bold;
@@ -44,6 +43,7 @@ export const DelayButton = styled.button`
   margin-bottom: 5px;
   align-self: center;
   cursor: pointer;
+  white-space: nowrap;
 `;
 
 export const CancelButton = styled.button`

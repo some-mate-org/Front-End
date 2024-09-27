@@ -20,6 +20,8 @@ export const ModalContent = styled.div`
   height: auto;
   text-align: center;
   position: relative;
+  width: 300px;
+  background-color: white;
 
   h2 {
     font-size: 20px;
