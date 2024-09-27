@@ -12,6 +12,7 @@ import ResultPage from './pages/ResultPage';
 import MatchingPage from './pages/MatchingPage';
 import LoginPage from './pages/LoginPage';
 import MainuserPage from './pages/MainuserPage';
+import MatchingFailPage from'./pages/MatchingFailPage';
 
 
 export const router = createBrowserRouter([
@@ -64,5 +65,11 @@ export const router = createBrowserRouter([
     path: '/mainuser',
     element: <PageWrapper />,
     children: [{ index: true, element: <MainuserPage /> }],
+  },
+  
+{
+    path: '/matchingfail',
+    element: <PageWrapper />,
+    children: [{ index: true, element: <MatchingFailPage /> }],
   },
 ]);
