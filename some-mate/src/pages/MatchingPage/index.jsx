@@ -69,7 +69,7 @@ export default function MatchingPage() {
         <MatchingLogo width={70} />
         <S.Text size={0.7}>*해당 정보는 확인을 누르면 사라집니다</S.Text>
         <Button
-          theme="gray"
+          theme="primary"
           width={100}
           style={{ margin: 0 }}
           text="나가기"

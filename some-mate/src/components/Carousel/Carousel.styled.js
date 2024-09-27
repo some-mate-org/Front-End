@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 export const Container = styled.ul`
   padding: 0;
   margin: 0;
-  transform: ${(props) => `translateY(calc(-${props.count} * (16rem)))`};
+  transform: ${(props) => `translateY(calc(-${props.count} * (16.1rem)))`};
 `;
 
 export const ImageList = styled.li`

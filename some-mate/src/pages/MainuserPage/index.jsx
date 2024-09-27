@@ -3,12 +3,12 @@ import axios from 'axios';
 import * as S from './MainuserPage.styled';
 import Button from '../../components/Button';
 import Info from '../../components/Info';
-import MainLogo from '../../assets/logo/MainLogo.svg';
+import MainLogo from '../../assets/logo/MainLogo.svg?react';
 import { useNavigate } from 'react-router-dom';
-import OwlIcon from '../../assets/profile/owl.svg';
-import FoxIcon from '../../assets/profile/fox.svg';
-import DogIcon from '../../assets/profile/dog.svg';
-import CatIcon from '../../assets/profile/cat.svg';
+import OwlIcon from '../../../public/owl.svg';
+import FoxIcon from '../../../public/fox.svg';
+import DogIcon from '../../../public/dog.svg';
+import CatIcon from '../../../public/cat.svg';
 
 export default function MainuserPage() {
   const [userInfo, setUserInfo] = useState({
@@ -138,7 +138,7 @@ export default function MainuserPage() {
 
   return (
     <S.Container>
-      <img src={MainLogo} alt="Main Logo" />
+      {/* <MainLogo  /> */}
       {errorMessage && <p>{errorMessage}</p>}
       <S.ProfileImageContainer>
         <img src={getProfileImage(userInfo.profile)} alt="Profile" />
@@ -149,7 +149,7 @@ export default function MainuserPage() {
       <Info text={`MBTI: ${userInfo.mbti}`} />
       <Button
         width={270}
-        theme="gray"
+        theme="primary"
         text="썸메이트 다시 찾아보기"
         onClick={handleRematching}
       />

@@ -5,7 +5,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 30px;
+  /* margin-left: 30px; */
 `;
 
 export const Text = styled.div`
@@ -24,15 +24,15 @@ export const StyledLink = styled(Link)`
 `;
 
 export const ProfileImageContainer = styled.div`
-  width: 160px;
-  height: 160px;
+  width: 8rem;
+  height: 8rem;
   border-radius: 50%;
   overflow: hidden;  
   background-color: #8BC4EF;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto 30px auto;  
+  margin: 0 auto 10px auto;  
 
   img {
     width: 100%;
