@@ -10,28 +10,26 @@ export default function MatchingFailpage() {
   const navigate = useNavigate();
 
   const handleClickBtn = () => {
-    navigate('/mainuser'); 
+    navigate('/mainuser');
   };
 
   return (
     <S.Container>
-      <Loading width={250} />
-      <S.RobotWrapper>
-        <S.RoundImage>
-          <Robot width={200} />
-        </S.RoundImage>
-      </S.RobotWrapper>
+      <Loading height={112} style={{ marginBottom: '1rem' }} />
       <S.InfoBox>
-        <S.InfoText>
-          <Loadingment width={200} />
-        </S.InfoText>
+        <S.ImgBox>
+          <Robot />
+        </S.ImgBox>
+        <Loadingment width={200} />
       </S.InfoBox>
       <S.BottomWrapper>
-        <S.QuestionText>mate와 매칭을 다음 기회로 노려 보시겠습니까?</S.QuestionText>
+        <S.QuestionText>
+          mate와 매칭을 다음 기회로 노려 보시겠습니까?
+        </S.QuestionText>
         <Heartbreak />
         <S.SmallText>*해당 정보를 확인을 누르면 사라집니다</S.SmallText>
         <Button
-          theme="gray"
+          theme="primary"
           width={100}
           style={{ margin: 0 }}
           text="확인"

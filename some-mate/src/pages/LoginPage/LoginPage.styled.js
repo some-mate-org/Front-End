@@ -8,8 +8,11 @@ export const Container = styled.div`
   /* margin-left: 20px; */
 `;
 
+
 export const InfoText = styled.div`
   font-size: 15px;
+  color: #737373;
+  margin-top: 2px;
   color: #737373;
   margin-top: 2px;
 `;
@@ -24,6 +27,9 @@ export const Text = styled.div`
 
 export const QuestionText = styled.div`
   font-size: 16px;
+  font-weight: semi-bold;
+  color: #000000;
+  margin-top: 100px;
   font-weight: semi-bold;
   color: #000000;
   margin-top: 100px;

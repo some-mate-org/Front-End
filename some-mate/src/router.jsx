@@ -7,13 +7,11 @@ import SignPage3 from './pages/SignPage3';
 import SignPage4 from './pages/SignPage4';
 import SurveyPage from './pages/SurveyPage';
 
-
 import ResultPage from './pages/ResultPage';
 import MatchingPage from './pages/MatchingPage';
 import LoginPage from './pages/LoginPage';
 import MainuserPage from './pages/MainuserPage';
-import MatchingFailPage from'./pages/MatchingFailPage';
-
+import MatchingFailPage from './pages/MatchingFailPage';
 
 export const router = createBrowserRouter([
   {
@@ -66,9 +64,9 @@ export const router = createBrowserRouter([
     element: <PageWrapper />,
     children: [{ index: true, element: <MainuserPage /> }],
   },
-  
-{
-    path: '/matchingfail',
+
+  {
+    path: '/matching/fail',
     element: <PageWrapper />,
     children: [{ index: true, element: <MatchingFailPage /> }],
   },

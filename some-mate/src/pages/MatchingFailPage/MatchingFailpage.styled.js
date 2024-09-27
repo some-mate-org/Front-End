@@ -8,47 +8,35 @@ export const Container = styled.div`
   width: 100%;
 `;
 
-export const RobotWrapper = styled.div`
-  position: relative; 
+export const ImgBox = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-bottom: 1rem; 
-`;
-
-export const RoundImage = styled.div`
   border-radius: 50%;
-  background-color: #FBEDA3; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 9rem; 
-  height: 9rem;
-  z-index: 10; 
+  width: 8rem;
+  height: 8rem;
+  z-index: 10;
+  background-color: #fbeda3;
+  text-align: center;
+  position: absolute;
+  top: -4rem;
 `;
 
 export const InfoBox = styled.div`
-  position: absolute; 
-  top: 40%; 
-  left: 50%; 
-  transform: translate(-50%, -50%); 
-  padding: 1rem;
-  border: solid 3px #fae000; 
-  background-color: #fffdf2; 
-  border-radius: 8px; 
+  position: relative;
+  border: solid 3px #fae000;
+  background-color: #fffdf2;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 270px;
-  height: 190px;
- 
-`;
-
-export const InfoText = styled.div`
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #737373;
-  margin-top: 2rem
+  width: -webkit-fill-available;
+  margin: 0 0.8rem;
+  padding: 7.3rem;
+  border-radius: 10%;
+  margin-top: 4rem;
+  /* overflow: hidden; */
 `;
 
 export const BottomWrapper = styled.div`
@@ -57,8 +45,8 @@ export const BottomWrapper = styled.div`
   align-items: center;
   width: 80%;
   gap: 1rem;
-  padding: 1.5rem;
-  margin-top: 12rem;
+  padding: 1rem;
+  margin-top: 1.3rem;
   border-top: solid 2px #e4e1e1;
 `;
 
@@ -69,6 +57,7 @@ export const QuestionText = styled.div`
 `;
 
 export const SmallText = styled.div`
-  font-size: 0.8rem;
+  font-weight: bold;
+  font-size: 0.7rem;
   color: #737373;
 `;

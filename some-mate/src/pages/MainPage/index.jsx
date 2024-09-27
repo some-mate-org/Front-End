@@ -25,7 +25,7 @@ export default function MainPage() {
       </S.TitleLogo>
       <Button
         width={228}
-        theme="gray"
+        theme="primary"
         onClick={handleSignupClick}
         text="썸메이트 가입하기"
       />
