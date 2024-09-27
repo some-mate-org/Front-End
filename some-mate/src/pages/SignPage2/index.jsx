@@ -81,20 +81,23 @@ function SignPage2() {
 
   return (
     <Container>
-      <ProgressBar progress={66} timeLeft="가입까지 15초 남았어요!" />
+      <ProgressBar progress={50} timeLeft="가입까지 15초 남았어요!" />
       <QuestionWrapper>
-      <Title>
-        당신의 정보를
-        <br />
-        <span>모두</span> 작성해주세요
-      </Title>
-      <GenderCard imageSrc={QuCharactor} title={
-          <Typical
-            steps={['빠짐없이 다 작성해줘!', 1000]} // 타이핑 효과 적용
-            loop={1}
-            wrapper="span"
-          /> 
-          }/>
+        <Title>
+          당신의 정보를
+          <br />
+          <span>모두</span> 작성해주세요
+        </Title>
+        <GenderCard
+          imageSrc={QuCharactor}
+          title={
+            <Typical
+              steps={['빠짐없이 다 작성해줘!', 1000]} // 타이핑 효과 적용
+              loop={1}
+              wrapper="span"
+            />
+          }
+        />
       </QuestionWrapper>
       <InputBox
         type="text"
@@ -125,7 +128,7 @@ function SignPage2() {
       <ButtonContainer>
         <Button
           width={320}
-          theme="gray"
+          theme={buttonDisabled ? 'gray' : 'primary'} // buttonDisabled에 따라 테마 변경
           onClick={handleNext}
           text="다음으로"
           disabled={buttonDisabled}

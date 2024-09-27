@@ -46,17 +46,20 @@ function SignPage() {
 
   return (
     <Container>
-      <ProgressBar progress={33} timeLeft="가입까지 30초 남았어요!" />
+      <ProgressBar progress={25} timeLeft="가입까지 30초 남았어요!" />
       <QuestionWrapper>
         <Title>성별을 알려주세요</Title>
         {/* <GenderCard imageSrc={QuCharactor} title="너의 성별은 뭐야?" /> */}
-        <GenderCard imageSrc={QuCharactor} title={
-          <Typical
-            steps={['너의 성별은 뭐야?', 1000]} // 타이핑 효과 적용
-            loop={1}
-            wrapper="span"
-          /> 
-          }/>
+        <GenderCard
+          imageSrc={QuCharactor}
+          title={
+            <Typical
+              steps={['너의 성별은 뭐야?', 1000]} // 타이핑 효과 적용
+              loop={1}
+              wrapper="span"
+            />
+          }
+        />
       </QuestionWrapper>
       <GenderOptionsContainer>
         <GenderOptionCard
@@ -73,7 +76,12 @@ function SignPage() {
         />
       </GenderOptionsContainer>
       <ButtonContainer>
-        <Button width={320} theme="gray" onClick={handleNext} text="다음으로" />
+        <Button
+          width={320}
+          theme={gender !== null ? 'primary' : 'gray'}
+          onClick={handleNext}
+          text="다음으로"
+        />
       </ButtonContainer>
       {isModalOpen && (
         <Modal

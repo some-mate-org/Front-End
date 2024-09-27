@@ -79,13 +79,14 @@ export default function ResultPage() {
           </S.Desc>
         ))}
       </S.DescWrapper>
-      <S.Text size={12} color="#8BC4EF" style={{ padding: 0 }}>
-        FROM. SOMEMATE
-      </S.Text>
-      <S.Text size={12} color="#8BC4EF" style={{ padding: 0 }}>
-        초대장이 날아왔어요!
-      </S.Text>
       <S.Emoji>
+        <S.Text size={12} color="#8BC4EF" style={{ padding: 0 }}>
+          FROM. SOMEMATE
+        </S.Text>
+        <S.Text size={12} color="#8BC4EF" style={{ padding: 0 }}>
+          초대장이 날아왔어요!
+        </S.Text>
+
         <InvitationImg />
       </S.Emoji>
       <Button

@@ -1,7 +1,7 @@
 // InputBox.js
 import * as S from './InputBox.styled';
 
-const InputBox = ({ type, placeholder, value, onChange }) => {
+const InputBox = ({ type, placeholder, value, onChange, onKeyDown }) => {
   return (
     <S.InputContainer>
       <S.Input
@@ -9,6 +9,7 @@ const InputBox = ({ type, placeholder, value, onChange }) => {
         placeholder={placeholder}
         value={value}
         onChange={onChange}  // onChange 이벤트 핸들러 추가
+        onKeyDown={onKeyDown}
       />
     </S.InputContainer>
   );
