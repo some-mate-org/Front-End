@@ -7,11 +7,11 @@ export const GrayButton = styled.button`
   height : 50px;
   padding: 1rem;
   border: 2px solid #737373;
-  background-color: #737373;
+  background-color: #FFFFFF;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
-  color: white;
+  color: #737373;
   margin-top: 1rem;
   cursor: pointer;
 `;
@@ -43,9 +43,9 @@ export const BrownButton = styled(GrayButton)`
 `;
 
 export const PrimaryButton = styled(GrayButton)`
-  background-color: #FFFFFF;
-  color: #A3D1FB;
-  border: 2px solid #A3D1FB;
+  background-color: #737373;
+  color: white;
+  border: 2px solid #737373;
   text-align: center;
   ${({ theme }) =>
     theme === 'white' &&

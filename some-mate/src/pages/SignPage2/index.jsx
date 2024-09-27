@@ -81,7 +81,7 @@ function SignPage2() {
 
   return (
     <Container>
-      <ProgressBar progress={66} timeLeft="가입까지 15초 남았어요!" />
+      <ProgressBar progress={50} timeLeft="가입까지 15초 남았어요!" />
       <QuestionWrapper>
         <Title>
           당신의 정보를
