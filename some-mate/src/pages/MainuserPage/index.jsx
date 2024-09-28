@@ -3,12 +3,12 @@ import axios from 'axios';
 import * as S from './MainuserPage.styled';
 import Button from '../../components/Button';
 import Info from '../../components/Info';
-import MainLogo from '../../assets/logo/MainLogo.svg?react';
+// import MainLogo from '../../assets/logo/MainLogo.svg?react';
 import { useNavigate } from 'react-router-dom';
-import OwlIcon from '../../../public/owl.svg';
-import FoxIcon from '../../../public/fox.svg';
-import DogIcon from '../../../public/dog.svg';
-import CatIcon from '../../../public/cat.svg';
+import OwlIcon from '../../assets/profile/owl.svg';
+import FoxIcon from '../../assets/profile/fox.svg';
+import DogIcon from '../../assets/profile/dog.svg';
+import CatIcon from '../../assets/profile/cat.svg';
 
 export default function MainuserPage() {
   const [userInfo, setUserInfo] = useState({
