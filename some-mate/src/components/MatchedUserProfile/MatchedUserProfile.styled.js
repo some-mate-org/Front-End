@@ -73,4 +73,6 @@ export const openChatButton = styled.button`
   color: #fae000;
   border-radius: 10px;
   padding: 1rem;
+  display: flex;
+  align-items: center;
 `;

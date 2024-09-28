@@ -10,7 +10,7 @@ export default function MatchingFailpage() {
   const navigate = useNavigate();
 
   const handleClickBtn = () => {
-    navigate('/mainuser');
+    navigate('/myprofile');
   };
 
   return (

@@ -24,13 +24,13 @@ export default function MatchingPage() {
     const loadInfo = async () => {
       if (!accessToken) navigate('/login');
       else {
-        const isempty  = await getMatchedUserInfo(
+        const isempty = await getMatchedUserInfo(
           setMatchedUserInfo,
           setMatchedUserDesc,
           accessToken
         );
 
-        if(!isempty) navigate("/matching/fail")
+        if (!isempty) navigate('/matching/fail');
       }
     };
 
@@ -41,13 +41,12 @@ export default function MatchingPage() {
     setIsModalOpen(false);
   };
 
-  const modalConfirmBtn = () => {
+  const modalConfirmBtn = async () => {
     //매칭 히스토리에 추가
-    if (!matchedUserInfo) {
-      const result = postMatchingHistory(matchedUserInfo.idx, accessToken);
-      console.log('result :' + result);
+    const success = await postMatchingHistory(matchedUserInfo.idx, accessToken);
+    if (success) {
+      window.location.href = '/myprofile'; // 요청이 성공적으로 완료된 후 페이지 이동
     }
-    navigate('/mainuser');
   };
 
   const handleClickBtn = () => {

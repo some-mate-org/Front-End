@@ -25,7 +25,7 @@ export default function LoginPage() {
       localStorage.setItem('accessToken', accessToken);
       localStorage.setItem('refreshToken', refreshToken);
 
-      navigate('/mainuser');
+      navigate('/myprofile');
     } catch (error) {
       console.error('로그인 실패:', error);
       alert('아이디 또는 비밀번호가 맞지 않습니다. 다시 확인해주세요.');

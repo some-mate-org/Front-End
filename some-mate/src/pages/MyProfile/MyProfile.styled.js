@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 // import { Link } from 'react-router-dom';
 
@@ -46,12 +47,13 @@ export const UserIconAndName = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   img {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     margin-right: 8px;
+    margin-left: 8px;
   }
 `;
 
@@ -60,8 +62,8 @@ export const MatchingHistoryTitle = styled.h3`
   font-size: 15px;
   margin-right: 15rem;
   font-weight: bold;
-  color: #BE9D9D;
-  background-color: #EEEDED;
+  color: #be9d9d;
+  background-color: #eeeded;
   border-radius: 20px;
   padding: 10px;
   width: 30%;
@@ -90,7 +92,7 @@ export const UserInfoText = styled.span`
 
 export const UserInfoTextCarousel = styled.span`
   font-size: 17px;
-  color: #8E8E8E;
+  color: #8e8e8e;
   font-weight: bold;
   display: block;
   margin: 0 3px;
@@ -99,14 +101,18 @@ export const UserInfoTextCarousel = styled.span`
 export const CarouselContainer = styled.div`
   display: flex;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
   width: 100%;
+  height: 100%;
   margin-bottom: 20px;
   scroll-behavior: smooth;
+  gap: 0.3rem;
+  justify-content: ${({ itemsCount }) =>
+    itemsCount === 1
+      ? 'center'
+      : 'flex-start'}; /* 아이템 수에 따라 중앙 정렬 또는 기본 정렬 */
 
   &::-webkit-scrollbar {
-    display: none;
+    display: none; /* 스크롤바 숨김 */
   }
 `;
 
@@ -137,17 +143,17 @@ export const openChatButton = styled.button`
 `;
 
 export const Slide = styled.div`
-  flex: 0 0 100%;
+  flex: 0 0 ${({ itemcount }) => (itemcount === 1 ? '20rem' : '18rem')}; /* 요소 수에 따라 너비 조정 */
   scroll-snap-align: start;
   display: flex;
   align-items: center;
-  height: 150px;
+  height: 145px;
   background-color: ${({ index }) => {
     const colors = ['#EEEDED', '#ceeaff', '#ffebcd', '#ffe4e1'];
     return colors[index % colors.length];
   }};
   border-radius: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
   text-align: left;
   padding: 20px;
   transition: transform 0.3s ease-in-out;
@@ -156,10 +162,18 @@ export const Slide = styled.div`
     width: 100px;
     height: 100px;
     object-fit: cover;
-    margin-left: 3rem;
+    /* margin-left: 3rem; */
   }
 
-  &:hover {
+  /* &:hover {
     transform: scale(1.05);
-  }
+  } */
+`;
+
+export const StyledLink = styled(Link)`
+  font-size: 17px;
+  color: #989494;
+  text-decoration: none;
+  margin-top: 10px;
+  display: block;
 `;

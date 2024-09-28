@@ -7,12 +7,15 @@ export const GrayButton = styled.button`
   height : 50px;
   padding: 1rem;
   border: 2px solid #737373;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
   color: #737373;
   margin-top: 1rem;
+  display: flex; /* Flexbox 사용 */
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
   cursor: pointer;
 `;
 
@@ -30,9 +33,9 @@ export const BlueButton = styled(GrayButton)`
 `;
 
 export const BrownButton = styled(GrayButton)`
-  background-color: #3B1B1B;
+  background-color: #3b1b1b;
   color: white;
-  border: 2px solid #3B1B1B;
+  border: 2px solid #3b1b1b;
   text-align: center;
   ${({ theme }) =>
     theme === 'white' &&

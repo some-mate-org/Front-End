@@ -107,7 +107,7 @@ export default function MainuserPage() {
       navigate('/login'); // accessToken이 없으면 로그인 페이지로 이동
     }
   }, [navigate]);
-  // 빈 배열을 사용하여 첫 렌더링 시에만 실행
+ 
 
   // 프로필 이미지를 선택하는 함수
   const getProfileImage = (profile) => {
