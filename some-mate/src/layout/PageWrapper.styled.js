@@ -7,7 +7,7 @@ export const PageWrapper = styled.div`
   align-items: center;
   min-width: 393px;
   max-width: 400px;
-  height: 852px;
+  height: 810px;
   /* margin-left: 10px; */
   background-color: #fff;
   box-shadow: rgb(100 100 111 / 20%) 0 7px 29px 0;

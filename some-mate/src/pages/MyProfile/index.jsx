@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import * as S from './MyProfile.styled';
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
-import OwlIcon from '../../assets/profile/owl.svg';
-import FoxIcon from '../../assets/profile/fox.svg';
-import DogIcon from '../../assets/profile/dog.svg';
-import CatIcon from '../../assets/profile/cat.svg';
+import OwlIcon from '../../assets/profile/owl.svg?react';
+import FoxIcon from '../../assets/profile/fox.svg?react';
+import DogIcon from '../../assets/profile/dog.svg?react';
+import CatIcon from '../../assets/profile/cat.svg?react';
 import HeartIcon from '../../assets/icon/heart.svg';
 import PencilIcon from '../../assets/icon/pencil.svg';
 import PersonIcon from '../../assets/icon/person.svg';
@@ -116,13 +116,13 @@ export default function MyProfile() {
   const getProfileImage = (profile) => {
     switch (profile) {
       case 'owl':
-        return OwlIcon;
+        return <OwlIcon />;
       case 'fox':
-        return FoxIcon;
+        return <FoxIcon />;
       case 'dog':
-        return DogIcon;
+        return <DogIcon />;
       case 'cat':
-        return CatIcon;
+        return <CatIcon />;
       default:
         return CatIcon;
     }
@@ -146,7 +146,7 @@ export default function MyProfile() {
   return (
     <S.Container>
       <S.ProfileImageContainer>
-        <img src={getProfileImage(userInfo.profile)} />
+        {getProfileImage(userInfo.profile)}
       </S.ProfileImageContainer>
 
       <S.UserInfoContainer>
@@ -181,7 +181,9 @@ export default function MyProfile() {
               index={index}
               itemcount={matchingUserList.length}
             >
-              <img src={getProfileImage(user.profile)} alt={user.name} />
+              {/* <S.ProfileImageContainer> */}
+              {getProfileImage(user.profile)}
+              {/* </S.ProfileImageContainer> */}
               <S.UserInfoCarouselContainer>
                 <S.UserInfoTextCarousel>✏️ {user.name}</S.UserInfoTextCarousel>
                 <S.UserInfoTextCarousel>

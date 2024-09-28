@@ -1,10 +1,11 @@
 // ProfileOptionCard.js
-import { OptionCardContainer, OptionImage, OptionText } from './ProfileOptionCard.styled';
+import { OptionCardContainer, OptionText } from './ProfileOptionCard.styled';
 
-const ProfileOptionCard = ({ imageSrc, title, onClick }) => { // onClick 추가
+const ProfileOptionCard = ({ Image, title, onClick }) => {
+  // onClick 추가
   return (
-    <OptionCardContainer onClick={onClick}> 
-      <OptionImage src={imageSrc} alt={title} />
+    <OptionCardContainer onClick={onClick}>
+      <Image />
       <OptionText>{title}</OptionText>
     </OptionCardContainer>
   );

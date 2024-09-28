@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import InputBox from '../../components/InputBox';
 import kakaoIcon from '../../assets/logo/KakaoTalk_logo.png';
 import GenderCard from '../../components/GenderCard';
-import QuCharactor from '../../assets/QuCharactor.svg';
+import QuCharactor from '../../assets/QuCharactor.svg?react';
 import ProgressBar from '../../components/ProgressBar';
 import ChatModal from '../../components/ChatModal';
 import Typical from 'react-typical'; // 타이핑 효과를 위한 라이브러리
@@ -49,7 +49,7 @@ function SignPage3() {
       </Title>
       <GenderCardContainer>
         <GenderCard
-          imageSrc={QuCharactor}
+          Image={QuCharactor}
           title={
             <Typical
               steps={['매칭을위해 URL를 가져와줘!', 1000]} // 타이핑 효과 적용

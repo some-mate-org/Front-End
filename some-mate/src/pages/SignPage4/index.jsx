@@ -3,11 +3,11 @@ import { useState } from 'react';
 import ProgressBar from '../../components/ProgressBar';
 import GenderCard from '../../components/GenderCard';
 import ProfileOptionCard from '../../components/ProfileOptionCard';
-import QuCharactor from '../../assets/QuCharactor.svg';
-import OwlIcon from '../../assets/profile/owl.svg';
-import FoxIcon from '../../assets/profile/fox.svg';
-import DogIcon from '../../assets/profile/dog.svg';
-import CatIcon from '../../assets/profile/cat.svg';
+import QuCharactor from '../../assets/QuCharactor.svg?react';
+import OwlIcon from '../../assets/profile/owl.svg?react';
+import FoxIcon from '../../assets/profile/fox.svg?react';
+import DogIcon from '../../assets/profile/dog.svg?react';
+import CatIcon from '../../assets/profile/cat.svg?react';
 import Button from '../../components/Button';
 import { useUser } from '../../Context/userContext.jsx';
 import { useNavigate } from 'react-router-dom';
@@ -46,7 +46,7 @@ function SignPage4() {
         </Title>
         {/* <GenderCard imageSrc={QuCharactor} title="원하는 프로필을 골라줘!" /> */}
         <GenderCard
-          imageSrc={QuCharactor}
+          Image={QuCharactor}
           title={
             <Typical
               steps={['원하는 프로필을 골라줘!', 1000]} // 타이핑 효과 적용
@@ -58,24 +58,24 @@ function SignPage4() {
       </QuestionWrapper>
       <ProfileOptionsContainer>
         <ProfileOptionCard
-          imageSrc={OwlIcon}
+          Image={OwlIcon}
           isSelected={profile === 'owl'}
           onClick={() => setProfile('owl')}
         />
         <ProfileOptionCard
-          imageSrc={CatIcon}
+          Image={CatIcon}
           isSelected={profile === 'cat'}
           onClick={() => setProfile('cat')}
         />
       </ProfileOptionsContainer>
       <ProfileOptionsContainer>
         <ProfileOptionCard
-          imageSrc={DogIcon}
+          Image={DogIcon}
           isSelected={profile === 'dog'}
           onClick={() => setProfile('dog')}
         />
         <ProfileOptionCard
-          imageSrc={FoxIcon}
+          Image={FoxIcon}
           isSelected={profile === 'fox'}
           onClick={() => setProfile('fox')}
         />

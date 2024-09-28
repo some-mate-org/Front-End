@@ -14,11 +14,10 @@ export default defineConfig({
   ],
   server: {
     proxy: {
-      '/api': {
-        // target: 'http://localhost:8080', 
-        target: 'http://192.168.0.68:8080',  // 백엔드 서버 주소
+      "/api": {
+        target: "http://192.168.219.177:8080", // 백엔드 서버 주소
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+        rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
   },

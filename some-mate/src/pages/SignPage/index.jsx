@@ -4,9 +4,9 @@ import Modal from '../../components/Modal';
 import ProgressBar from '../../components/ProgressBar';
 import GenderCard from '../../components/GenderCard';
 import GenderOptionCard from '../../components/GenderOptionCard';
-import QuCharactor from '../../assets/QuCharactor.svg';
-import MaleIcon from '../../assets/maleIcon.svg';
-import FemaleIcon from '../../assets/femaleIcon.svg';
+import QuCharactor from '../../assets/QuCharactor.svg?react';
+import MaleIcon from '../../assets/maleIcon.svg?react';
+import FemaleIcon from '../../assets/femaleIcon.svg?react';
 import Button from '../../components/Button';
 import { useUser } from '../../Context/userContext.jsx';
 import Typical from 'react-typical'; // 타이핑 효과를 위한 라이브러리
@@ -51,7 +51,7 @@ function SignPage() {
         <Title>성별을 알려주세요</Title>
         {/* <GenderCard imageSrc={QuCharactor} title="너의 성별은 뭐야?" /> */}
         <GenderCard
-          imageSrc={QuCharactor}
+          Image={QuCharactor}
           title={
             <Typical
               steps={['너의 성별은 뭐야?', 1000]} // 타이핑 효과 적용
@@ -63,13 +63,13 @@ function SignPage() {
       </QuestionWrapper>
       <GenderOptionsContainer>
         <GenderOptionCard
-          imageSrc={MaleIcon}
+          Image={MaleIcon}
           title="남자에요"
           isSelected={gender === 0}
           onClick={() => setGender(0)}
         />
         <GenderOptionCard
-          imageSrc={FemaleIcon}
+          Image={FemaleIcon}
           title="여자에요"
           isSelected={gender === 1}
           onClick={() => setGender(1)}

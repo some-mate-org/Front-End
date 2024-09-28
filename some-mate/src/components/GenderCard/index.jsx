@@ -1,9 +1,9 @@
 import * as S from './GenderCard.styled';
 
-const GenderCard = ({ imageSrc, title }) => {
+const GenderCard = ({ Image, title }) => {
   return (
     <S.GenderCardWrapper>
-      <S.Image src={imageSrc} alt="Gender Icon" />
+      <Image />
       <S.TitleButton>{title}</S.TitleButton>
     </S.GenderCardWrapper>
   );

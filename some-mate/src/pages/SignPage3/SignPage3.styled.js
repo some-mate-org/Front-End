@@ -5,6 +5,8 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0;
+  padding : 0;
 `;
 export const DescriptionText = styled.p`
   font-size: 15px;
@@ -54,7 +56,7 @@ export const ButtonContainer = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 70px;
+  margin-top: 2rem;
   margin-left: 2rem;
   margin-right: auto;
   gap: 20px;
@@ -63,6 +65,7 @@ export const ButtonContainer = styled.div`
 export const InputContainer = styled.div`
   display: flex;
   align-items: center; // 이미지와 입력 상자를 중앙 정렬
+  width: 100%;
   margin: 20px 0;
 `;
 
@@ -80,9 +83,9 @@ export const KakaoButton = styled.button`
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-  &:hover {
+  /* &:hover {
     background-color: #fdd835;
-  }
+  } */
 
   &:active {
     background-color: #ffeb00;
@@ -112,12 +115,13 @@ export const NormalButton = styled.button`
 `;
 
 export const KakaoIconContainer = styled.div`
-  margin-right: 10px;
+  /* margin-right: 5px; */
   display: flex;
   align-items: center;
   margin: 28px auto;
   width: 50px;
   height: 50px;
+  padding: 0;
   margin-left: 3rem;
   margin-right: auto;
   background-color: #ffeb00;
@@ -132,5 +136,7 @@ export const KakaoIconContainer = styled.div`
   img {
     width: 52px;
     height: 52px;
+    margin: 0;
+    padding: 0;
   }
 `;
