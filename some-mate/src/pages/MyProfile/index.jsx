@@ -6,28 +6,27 @@ import OwlIcon from '../../assets/profile/owl.svg';
 import FoxIcon from '../../assets/profile/fox.svg';
 import DogIcon from '../../assets/profile/dog.svg';
 import CatIcon from '../../assets/profile/cat.svg';
-import HeartIcon from '../../assets/icon/heart.png';
-import PencilIcon from '../../assets/icon/pencil.png';
-import PersonIcon from '../../assets/icon/person.png';
-import SkipIcon from '../../assets/icon/skip.png';
-import { useSwipeable } from 'react-swipeable';
+import HeartIcon from '../../assets/icon/heart.svg';
+import PencilIcon from '../../assets/icon/pencil.svg';
+import PersonIcon from '../../assets/icon/person.svg';
+import SkipIcon from '../../assets/icon/skip.svg';
+
 
 export default function MyProfile() {
   const [userInfo, setUserInfo] = useState({
-    name: '',
-    age: '',
-    mbti: '',
-    profile: '',
-    gender: '',
-    idx: '',
+    name: '이지수',
+    age: '25',
+    mbti: 'INFJ',
+    profile: 'owl',
+    gender: 0,
+    idx: '12345',
   });
 
-  const [currentIndex, setCurrentIndex] = useState(0); // 현재 보여주고 있는 카드의 인덱스
-  const [matchingUsers, setMatchingUsers] = useState([
-    { name: '홍길동', profile: 'owl', gender: 0, mbti: 'INTJ' },
-    { name: '이순신', profile: 'cat', gender: 0, mbti: 'ENTP' },
-    { name: '유관순', profile: 'dog', gender: 1, mbti: 'ENFJ' },
-    { name: '이도', profile: 'fox', gender: 0, mbti: 'INFJ' },
+  const [matchingUsers] = useState([
+    { name: '홍길동', profile: 'owl', gender: 0, mbti: 'INTJ', openchat_link: 'https://open.kakao.com/o/홍길동' },
+    { name: '이순신', profile: 'cat', gender: 0, mbti: 'ENTP', openchat_link: 'https://open.kakao.com/o/이순신' },
+    { name: '유관순', profile: 'dog', gender: 1, mbti: 'ENFJ', openchat_link: 'https://open.kakao.com/o/유관순' },
+    { name: '이도', profile: 'fox', gender: 0, mbti: 'INFJ', openchat_link: 'https://open.kakao.com/o/이도' },
   ]);
 
   const navigate = useNavigate();
@@ -62,72 +61,62 @@ export default function MyProfile() {
     }
   };
 
-  // Swipeable Hook to detect swipe events
-  const swipeHandlers = useSwipeable({
-    onSwipedLeft: () => {
-      if (currentIndex < matchingUsers.length - 1) {
-        setCurrentIndex(currentIndex + 1);
-      }
-    },
-    onSwipedRight: () => {
-      if (currentIndex > 0) {
-        setCurrentIndex(currentIndex - 1);
-      }
-    },
-    preventDefaultTouchmoveEvent: true, // 기본 터치 동작 방지
-    trackMouse: true, // 데스크탑에서도 동작하도록 설정
-  });
+  const handleOpenChat = (openchatLink) => {
+    window.open(openchatLink, '_blank');
+  };
 
-  return (
+ return (
     <S.Container>
       <S.ProfileImageContainer>
-        <img src={getProfileImage(userInfo.profile)} alt="Profile" />
+        <img src={getProfileImage(userInfo.profile)} />
       </S.ProfileImageContainer>
-
+  
       <S.UserInfoContainer>
         <S.UserIconAndName>
-          <img src={PersonIcon} alt="Person Icon" />
+          <img src={PersonIcon} />
           <S.UserInfoText>{userInfo.name}</S.UserInfoText>
         </S.UserIconAndName>
         <hr />
         <S.UserInfoRow>
-          <img src={HeartIcon} alt="Heart Icon" />
+          <img src={HeartIcon} />
           <S.UserInfoText>{getGender(userInfo.gender)}</S.UserInfoText>
         </S.UserInfoRow>
         <hr />
         <S.UserInfoRow>
-          <img src={PencilIcon} alt="Pencil Icon" />
+          <img src={PencilIcon} />
           <S.UserInfoText>{userInfo.age}살</S.UserInfoText>
         </S.UserInfoRow>
         <hr />
         <S.UserInfoRow>
-          <img src={SkipIcon} alt="Skip Icon" />
+          <img src={SkipIcon} />
           <S.UserInfoText>{userInfo.mbti}</S.UserInfoText>
         </S.UserInfoRow>
       </S.UserInfoContainer>
-
-      <S.MatchingHistoryTitle>matching history</S.MatchingHistoryTitle>
-
-      {/* Swipeable area */}
-      <div {...swipeHandlers} style={{ touchAction: 'pan-y', width: '100%' }}>
-        <S.MatchingUserCard>
-          <img src={getProfileImage(matchingUsers[currentIndex].profile)} alt={matchingUsers[currentIndex].name} />
-          <S.UserInfoText>{matchingUsers[currentIndex].name}</S.UserInfoText>
-          <S.UserInfoText>{getGender(matchingUsers[currentIndex].gender)}</S.UserInfoText>
-          <S.UserInfoText>{matchingUsers[currentIndex].mbti}</S.UserInfoText>
-        </S.MatchingUserCard>
-      </div>
-
+  
+      <S.MatchingHistoryTitle>이전 썸메이트 ▶️</S.MatchingHistoryTitle>
+  
+      <S.CarouselContainer>
+      {matchingUsers.map((user, index) => (
+        <S.Slide key={index} index={index}> 
+          <img src={getProfileImage(user.profile)} alt={user.name} />
+          <S.UserInfoCarouselContainer>
+            <S.UserInfoTextCarousel>✏️ :{user.name}</S.UserInfoTextCarousel>
+            <S.UserInfoTextCarousel>💛 :{getGender(user.gender)}</S.UserInfoTextCarousel>
+            <S.UserInfoTextCarousel>✨ :{user.mbti}</S.UserInfoTextCarousel>
+            <S.openChatButton onClick={() => handleOpenChat(user.openchat_link)}>
+              채팅 시작하기
+            </S.openChatButton>
+          </S.UserInfoCarouselContainer>
+        </S.Slide>
+      ))}
+    </S.CarouselContainer>
+  
       <Button
         width={270}
         theme="primary"
         text="썸메이트 다시 찾아보기"
         onClick={handleRematching}
       />
-
-      {/* <S.StyledLink to="/login" onClick={handleLogout}>
-        로그아웃
-      </S.StyledLink> */}
     </S.Container>
   );
 }

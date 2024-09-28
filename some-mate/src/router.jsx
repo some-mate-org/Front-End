@@ -67,7 +67,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/myprofile',
-    element: <MyProfile />,
+    element: <PageWrapper/>,
     children: [{ index: true, element: <MyProfile /> }],
   },
   {
