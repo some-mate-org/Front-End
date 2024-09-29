@@ -33,15 +33,15 @@ export const Title = styled.h2`
 export const ProfileOptionsContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   /* margin-right: 26px; */
   /* margin-bottom: 10px; */
   /* margin-down: 10px; */
-  gap: 10px;
+  /* gap: 10px; */
 `;
 
 export const ButtonContainer = styled.div`
-  margin-top: 50px;
+  /* margin-top: 0.1rem; */
 `;
 
 export const TitleLogo = styled.div`

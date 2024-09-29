@@ -6,7 +6,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0;
-  padding : 0;
+  padding: 0;
 `;
 export const DescriptionText = styled.p`
   font-size: 15px;
@@ -28,7 +28,7 @@ export const GenderCardContainer = styled.div`
 export const DescriptionContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   margin-left: 2rem;
   margin-right: auto;
 `;
@@ -52,14 +52,14 @@ export const Title = styled.h2`
 `;
 
 export const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-top: 2rem;
-  margin-left: 2rem;
-  margin-right: auto;
-  gap: 20px;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* text-align: center; */
+  margin-top: 1rem;
+  /* margin-left: 2rem; */
+  /* margin-right: auto; */
+  /* gap: 8px; */
 `;
 
 export const InputContainer = styled.div`

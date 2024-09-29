@@ -33,7 +33,7 @@ export const InfoBox = styled.div`
   align-items: center;
   width: -webkit-fill-available;
   margin: 0 0.8rem;
-  padding: 7.3rem;
+  padding: 6.3rem;
   border-radius: 10%;
   margin-top: 4rem;
   /* overflow: hidden; */
@@ -44,7 +44,7 @@ export const BottomWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 80%;
-  gap: 1rem;
+  gap: 0.8rem;
   padding: 1rem;
   margin-top: 1.3rem;
   border-top: solid 2px #e4e1e1;

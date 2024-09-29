@@ -17,9 +17,9 @@ export const Text = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
-  margin-top: 0.3rem;
-  width: 12rem;
-  height: 11rem;
+  /* margin-top: 0.3rem; */
+  width: 10.5rem;
+  height: 10rem;
 `;
 
 export const Image = styled.img`
@@ -33,7 +33,7 @@ export const DescWrapper = styled.ul`
   flex-direction: column;
   justify-content: flex-start;
   padding: 1rem 0 1rem 0;
-  margin: 0.2rem 0rem 1rem 0rem;
+  margin: 0.2rem 0rem 0.4rem 0rem;
   border-bottom: 1.5px solid #e4e1e1;
   padding: 1rem 2rem;
 `;
@@ -67,7 +67,7 @@ export const Emoji = styled.div`
   display: inline-block;
   animation: bounce 1s infinite; // 애니메이션 적용
   transform-origin: center bottom; // 현재 위치에서 애니메이션 시작
-
+  margin-top: 0.3rem;
   @keyframes bounce {
     0%, 100% {
       transform: translateY(0); // 원래 위치

@@ -75,14 +75,14 @@ function SignPage() {
           onClick={() => setGender(1)}
         />
       </GenderOptionsContainer>
-      <ButtonContainer>
-        <Button
-          width={320}
-          theme={gender !== null ? 'primary' : 'gray'}
-          onClick={handleNext}
-          text="다음으로"
-        />
-      </ButtonContainer>
+      {/* <ButtonContainer> */}
+      <Button
+        width={320}
+        theme={gender !== null ? 'primary' : 'gray'}
+        onClick={handleNext}
+        text="다음으로"
+      />
+      {/* </ButtonContainer> */}
       {isModalOpen && (
         <Modal
           confirmFunc={handleModalNext}

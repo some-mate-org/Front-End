@@ -26,7 +26,7 @@ export const Title = styled.h2`
 `;
 
 export const ButtonContainer = styled.div`
-  margin-top: 37px;
+  margin-top: 3rem;
 `;
 
 export const TitleLogo = styled.div`
