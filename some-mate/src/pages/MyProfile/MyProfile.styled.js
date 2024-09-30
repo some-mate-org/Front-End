@@ -38,6 +38,7 @@ export const UserInfoContainer = styled.div`
 `;
 
 export const UserInfoCarouselContainer = styled.div`
+  position: relative;
   text-align: left;
   padding: 1.5rem;
 `;
@@ -176,4 +177,26 @@ export const StyledLink = styled(Link)`
   text-decoration: none;
   margin-top: 10px;
   display: block;
+`;
+
+export const DeleteButton = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  /* right: 1rem;  */
+  left: 11rem;
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover img {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+  }
 `;

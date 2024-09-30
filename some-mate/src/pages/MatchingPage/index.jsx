@@ -13,7 +13,7 @@ export default function MatchingPage() {
   // const [userId, setUserId] = useState('');
   const [matchedUserInfo, setMatchedUserInfo] = useState({});
   const [matchedUserDesc, setMatchedUserDesc] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
   const accessToken = localStorage.getItem('accessToken');
 
   const navigate = useNavigate();
@@ -37,9 +37,9 @@ export default function MatchingPage() {
     loadInfo();
   }, []);
 
-  const modalCancelBtn = () => {
-    setIsModalOpen(false);
-  };
+  // const modalCancelBtn = () => {
+  //   setIsModalOpen(false);
+  // };
 
   const modalConfirmBtn = async () => {
     //매칭 히스토리에 추가
@@ -49,9 +49,9 @@ export default function MatchingPage() {
     }
   };
 
-  const handleClickBtn = () => {
-    setIsModalOpen(true);
-  };
+  // const handleClickBtn = () => {
+  //   setIsModalOpen(true);
+  // };
 
   return (
     <S.Container>
@@ -72,17 +72,18 @@ export default function MatchingPage() {
           width={100}
           style={{ margin: 0 }}
           text="나가기"
-          onClick={handleClickBtn}
+          onClick={modalConfirmBtn}
+          // onClick={handleClickBtn}
         />
       </S.BottomWrapper>
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <Modal
           cancelFunc={modalCancelBtn}
           confirmFunc={modalConfirmBtn}
           title="정말 나가시겠습니까?"
           text="지금 나가시는 경우, 현재 매칭된 썸메이트와는 다시 매칭되지 않습니다!"
         />
-      )}
+      )} */}
     </S.Container>
   );
 }

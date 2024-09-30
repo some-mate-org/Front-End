@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
-import QuCharactor from '../../assets/QuCharactor.svg';
+import QuCharactor from '../../assets/QuCharactor.svg?react';
 import * as S from './SurveyPage.styled';
 import Typical from 'react-typical'; // 타이핑 효과를 위한 라이브러리
 import ProgressBar from '../../components/ProgressBar';
@@ -133,7 +133,7 @@ export default function SurveyPage() {
     <S.PageWrapper>
       <ProgressBar progress={progress} timeLeft={timeLeft} />
       <S.CustomGenderCardWrapper>
-        <GenderCard imageSrc={QuCharactor} title={question.question1_title} />
+        <GenderCard Image={QuCharactor} title={question.question1_title} />
       </S.CustomGenderCardWrapper>
       <S.Question>
         <S.QuestionText>

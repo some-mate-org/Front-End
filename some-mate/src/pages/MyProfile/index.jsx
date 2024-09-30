@@ -10,8 +10,11 @@ import HeartIcon from '../../assets/icon/heart.svg';
 import PencilIcon from '../../assets/icon/pencil.svg';
 import PersonIcon from '../../assets/icon/person.svg';
 import SkipIcon from '../../assets/icon/skip.svg';
+import TrashIcon from '../../assets/icon/trash.svg';
+import Modal from '../../components/Modal'; // 모달 컴포넌트 추가
 import axios from 'axios';
 import getMatchedUserHistory from '../../services/getMatchedUserHistory';
+import getDeletedUserHistory from '../../services/getDeletedUserHistory'; // 삭제 기능 추가
 
 export default function MyProfile() {
   const [userInfo, setUserInfo] = useState({
@@ -22,6 +25,8 @@ export default function MyProfile() {
     gender: '',
   });
   const [matchingUserList, setMatchingUserList] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 추가
+  const [selectedUserIdx, setSelectedUserIdx] = useState(null); // 선택된 유저의 idx 저장
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
@@ -75,7 +80,7 @@ export default function MyProfile() {
     console.log('AccessToken:', accessToken); // 확인용
 
     if (accessToken) {
-      fetchUserInfo(accessToken); //사용자 정보 불러오기
+      fetchUserInfo(accessToken); // 사용자 정보 불러오기
       getMatchedUserHistory(setMatchingUserList, accessToken);
     } else {
       setErrorMessage('로그인 정보가 없습니다.');
@@ -143,6 +148,31 @@ export default function MyProfile() {
     window.open(openchatLink, '_blank');
   };
 
+  const handleDeleteUser = (recommendedIdx) => {
+    // 삭제할 유저의 idx 값을 저장하고 모달을 엽니다.
+    setIsModalOpen(true);
+    setSelectedUserIdx(recommendedIdx);
+  };
+
+  // 모달에서 확인 버튼을 눌렀을 때 삭제 진행
+  const modalConfirmBtn = async () => {
+    const accessToken = localStorage.getItem('accessToken');
+    const isDeleted = await getDeletedUserHistory(selectedUserIdx, accessToken); // 저장된 idx를 사용하여 삭제 요청
+
+    if (isDeleted) {
+      setMatchingUserList((prevList) =>
+        prevList.filter((user) => user.idx !== selectedUserIdx)
+      );
+      setIsModalOpen(false); // 모달 닫기
+    } else {
+      setErrorMessage('매칭된 유저를 삭제하는데 실패했습니다.');
+    }
+  };
+
+  const modalCancelBtn = () => {
+    setIsModalOpen(false); // 모달 닫기
+  };
+
   return (
     <S.Container>
       <S.ProfileImageContainer>
@@ -174,18 +204,24 @@ export default function MyProfile() {
       <S.MatchingHistoryTitle>이전 썸메이트 ▶️</S.MatchingHistoryTitle>
 
       <S.CarouselContainer>
-        {matchingUserList != null ? (
+        {Array.isArray(matchingUserList) && matchingUserList.length > 0 ? (
           matchingUserList.map((user, index) => (
             <S.Slide
               key={index}
               index={index}
               itemcount={matchingUserList.length}
             >
-              {/* <S.ProfileImageContainer> */}
               {getProfileImage(user.profile)}
-              {/* </S.ProfileImageContainer> */}
               <S.UserInfoCarouselContainer>
-                <S.UserInfoTextCarousel>✏️ {user.name}</S.UserInfoTextCarousel>
+                <S.DeleteButton
+                  onClick={() => {
+                    handleDeleteUser(user.idx);
+                  }}
+                >
+                  <img src={TrashIcon} alt="Delete" />
+                </S.DeleteButton>
+                <S.UserInfoTextCarousel>📛 {user.name}</S.UserInfoTextCarousel>
+                <S.UserInfoTextCarousel>✏️ {user.age}</S.UserInfoTextCarousel>
                 <S.UserInfoTextCarousel>
                   💛 {getGender(user.gender)}
                 </S.UserInfoTextCarousel>
@@ -209,9 +245,24 @@ export default function MyProfile() {
         text="썸메이트 다시 찾아보기"
         onClick={handleRematching}
       />
+
       <S.StyledLink to="/login" onClick={handleLogout}>
         로그아웃
       </S.StyledLink>
+
+      {isModalOpen && (
+        <Modal
+          cancelFunc={modalCancelBtn}
+          confirmFunc={modalConfirmBtn}
+          title="삭제 확인"
+          text={
+            <>
+              정말로 이 매칭을 삭제하시겠습니까? <br />
+              언제든 썸메이트로 다시 만날 수 있습니다. :)
+            </>
+          }
+        />
+      )}
     </S.Container>
   );
 }
