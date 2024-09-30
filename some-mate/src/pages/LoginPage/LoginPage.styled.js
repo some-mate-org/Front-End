@@ -40,8 +40,8 @@ export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
-  gap: 20px;
+  margin-top: 1rem;
+  /* gap: 20px; */
   /* margin-right: 25px; */
 `;
 
@@ -64,5 +64,5 @@ export const ButtonWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  /* margin-top: 1rem; */
 `;

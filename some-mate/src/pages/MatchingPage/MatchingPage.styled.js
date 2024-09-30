@@ -19,7 +19,7 @@ export const BottomWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  /* gap: 1rem; */
   color: black;
   padding: 1rem;
   margin-top: 1.3rem;

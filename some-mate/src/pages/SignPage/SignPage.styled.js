@@ -28,13 +28,14 @@ export const Title = styled.h2`
 export const GenderOptionsContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 86px;
+  margin-top: 2rem;
+  padding: 1rem;
   /* margin-right: 26px; */
-  gap: 34px;
+  gap: 1.3rem;
 `;
 
 export const ButtonContainer = styled.div`
-  margin-top: 137px;
+  margin-top: 2rem;
 `;
 
 export const TitleLogo = styled.div`
