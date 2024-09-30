@@ -67,7 +67,7 @@ export const MatchingHistoryTitle = styled.h3`
   background-color: #eeeded;
   border-radius: 20px;
   padding: 10px;
-  width: 30%;
+  width: 35%;
   text-align: center;
 `;
 
@@ -189,7 +189,7 @@ export const DeleteButton = styled.button`
   position: absolute;
   top: 10px;
   /* right: 1rem;  */
-  left: 11rem;
+  left: 9rem;
   img {
     width: 20px;
     height: 20px;

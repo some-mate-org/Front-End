@@ -26,18 +26,18 @@ export const Title = styled.h2`
 `;
 
 export const ButtonContainer = styled.div`
-  margin-top: 3rem;
+  margin-top: 1rem;
 `;
 
-export const TitleLogo = styled.div`
-  margin-top: 6.2rem;
-  margin-bottom: 0.7rem;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  width: fit-content;
-  transform: translateX(-10px);
-`;
+// export const TitleLogo = styled.div`
+//   margin-top: 6.2rem;
+//   margin-bottom: 0.7rem;
+//   margin-left: auto;
+//   margin-right: auto;
+//   display: block;
+//   width: fit-content;
+//   transform: translateX(-10px);
+// `;
 
 export const InputContainer = styled.div`
   display: flex;
@@ -46,9 +46,12 @@ export const InputContainer = styled.div`
 
 export const ErrorMessage = styled.p`
   color: red;
-  font-size: 14px;
-  margin-top: 5px;
+  font-size: 13px;
+  margin-top: 1px;
+  margin-bottom: -10px;;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
+
+

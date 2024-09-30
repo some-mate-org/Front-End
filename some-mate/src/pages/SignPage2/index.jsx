@@ -13,6 +13,7 @@ import {
   Title,
   ErrorMessage,
   QuestionWrapper,
+
 } from './SignPage2.styled';
 import { useUser } from '../../Context/userContext.jsx';
 import { checkUserId } from '../../services/checkUserId';
@@ -26,6 +27,7 @@ function SignPage2() {
   const [age, setAge] = useState('');
   const [userIdError, setUserIdError] = useState('');
   const [nameError, setNameError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const navigate = useNavigate();
 
   const handleNameChange = (e) => {
@@ -38,6 +40,17 @@ function SignPage2() {
       setNameError('');
     }
     setName(input);
+  };
+
+  const handlePasswordChange = (e) => {
+    const input = e.target.value;
+
+    if (input.length < 8) {
+      setPasswordError('비밀번호는 8자리 이상이어야 합니다.');
+    } else {
+      setPasswordError('');
+    }
+    setPassword(input);
   };
 
   const handleAgeChange = (e) => {
@@ -59,8 +72,8 @@ function SignPage2() {
   }, [userId]);
 
   useEffect(() => {
-    setButtonDisabled(!(name && userId && password && age && !nameError));
-  }, [name, userId, password, age, nameError]);
+    setButtonDisabled(!(name && userId && password && age && !nameError && !passwordError));
+  }, [name, userId, password, age, nameError, passwordError]);
 
   const handleNext = () => {
     if (!name || !userId || !password || !age) {
@@ -73,6 +86,10 @@ function SignPage2() {
     }
     if (nameError) {
       alert(nameError);
+      return;
+    }
+    if (passwordError) {
+      alert(passwordError);
       return;
     }
     updateUser({ name, userId, password, age });
@@ -117,8 +134,9 @@ function SignPage2() {
         type="password"
         placeholder="비밀번호"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={handlePasswordChange}
       />
+      {passwordError && <ErrorMessage>{passwordError}</ErrorMessage>}
       <InputBox
         type="text"
         placeholder="나이"
@@ -126,6 +144,7 @@ function SignPage2() {
         onChange={handleAgeChange}
       />
       <ButtonContainer>
+     
         <Button
           width={320}
           theme={buttonDisabled ? 'gray' : 'primary'} // buttonDisabled에 따라 테마 변경
@@ -133,6 +152,7 @@ function SignPage2() {
           text="다음으로"
           disabled={buttonDisabled}
         />
+     
       </ButtonContainer>
     </Container>
   );
