@@ -74,7 +74,7 @@ export const CarouselContainer = styled.div`
 export const ArrowButton = styled.button`
   background: none;
   border: none;
-  font-size: 28px;
+  font-size: 1.3rem;
   font-weight: bold;
   color: #888;
   cursor: pointer;

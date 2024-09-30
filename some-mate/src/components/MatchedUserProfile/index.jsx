@@ -7,6 +7,7 @@ export default function MatchedUserProfile({
 }) {
   const handleClickBtn = () => {
     const url = matchedUserInfo.openchat_link;
+    console.log(url);
     window.open(url, '_blank');
   };
 

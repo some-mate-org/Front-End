@@ -30,6 +30,18 @@ function SignPage3() {
   const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 추가
   const navigate = useNavigate();
 
+  const extractUrl = (text) => {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    const urls = text.match(urlRegex);
+    return urls ? urls[0] : ''; // URL이 있으면 첫 번째 URL 반환, 없으면 빈 문자열 반환
+  };
+
+  const handleChange = (e) => {
+    const text = e.target.value;
+    const extractedUrl = extractUrl(text); // 입력 값에서 URL만 추출
+    setOpenChatLink(extractedUrl); // 추출한 URL을 상태로 저장
+  };
+
   const handleNext = async () => {
     if (!openChatLink) {
       alert('카카오톡 오픈채팅방 URL를 입력해주세요.');
@@ -68,7 +80,7 @@ function SignPage3() {
           type="text"
           placeholder="카카오톡 채팅방 URL"
           value={openChatLink}
-          onChange={(e) => setOpenChatLink(e.target.value)} // 카카오톡 채팅방 URL 상태 업데이트
+          onChange={handleChange} // 변경된 onChange 핸들러
         />
       </InputContainer>
 

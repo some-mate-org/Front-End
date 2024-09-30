@@ -15,12 +15,12 @@ const getMatchedUserInfo = async (setMatchedUserInfo, setDesc, accessToken) => {
     // console.log('matchedUser response :', response);
 
     if (response.data.desc !== null) {
+      console.log('matchedUser response :', response.data);
       setMatchedUserInfo(response.data);
       setDesc(response.data.desc.split('/'));
-      return true
-    }
-    else {
-      return false
+      return true;
+    } else {
+      return false;
     }
   } catch (error) {
     console.error(error);
